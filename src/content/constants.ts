@@ -5,10 +5,11 @@ import {
   FaLinkedinIn,
 } from 'react-icons/fa6'
 
+export const EVENT_YEAR = 2025
+
 export const METADATA = {
-  title: 'IEEE SPAC 2025',
-  description:
-    'Official Website of the IEEE Student Professional Awareness Conference 2025, hosted in Ottawa, Ontario.',
+  title: `IEEE SPAC ${EVENT_YEAR}`,
+  description: `Official Website of the IEEE Student Professional Awareness Conference ${EVENT_YEAR}, hosted in Ottawa, Ontario.`,
 }
 
 export const LINKS = {
@@ -64,7 +65,6 @@ export const HEADER = {
 
 // -----------------  HERO ------------------
 export const HERO = {
-  IMAGE_URL: '/assets/spac_logo_year_stars.svg',
   IMAGE_ALT_TEXT: 'Main SPAC logo with year and stars',
   TITLE: 'IEEE Student Professional Awareness Conference',
   DATE: 'October 31',
@@ -328,7 +328,7 @@ export const CONTACT_FORM = {
 
 export const FOOTER = {
   LOGO: '/assets/twilight-design-system/ieee_spac_logo_combined_horizontal.svg',
-  COPYRIGHT_TEXT: 'Copyright © 2025 IEEE - All rights reserved.',
+  COPYRIGHT_TEXT: `Copyright © ${EVENT_YEAR} IEEE - All rights reserved.`,
   SOCIAL_MEDIA: [
     {
       name: 'Instagram',

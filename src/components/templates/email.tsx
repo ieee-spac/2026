@@ -1,3 +1,5 @@
+import { EVENT_YEAR } from '@/content/constants'
+
 export const EmailTemplate: React.FC<
   Readonly<{
     fullName?: string
@@ -8,7 +10,7 @@ export const EmailTemplate: React.FC<
 > = ({ fullName, subject, message, toTeam }) => {
   return (
     <>
-      {/* Message to SPAC 2024 Team from sender */}
+      {/* Message to SPAC Team from sender */}
       {toTeam
         ? (
             <p>
@@ -17,7 +19,7 @@ export const EmailTemplate: React.FC<
           )
         : (
             <div>
-              {/* Message to sender from SPAC 2024 Team */}
+              {/* Message to sender from SPAC Team */}
               <p>
                 Hello
                 {' '}
@@ -32,7 +34,11 @@ export const EmailTemplate: React.FC<
               <p>
                 If you have any questions,
                 concerns, or clarifications, replying to this email will send your
-                message to the SPAC 2024 team.
+                message to the SPAC
+                {' '}
+                {EVENT_YEAR}
+                {' '}
+                team.
               </p>
               <p>Here is a copy of your message:</p>
               <p>

@@ -3,13 +3,10 @@ import { NextResponse } from 'next/server'
 import { Resend } from 'resend'
 
 import { EmailTemplate } from '@/components/templates/email'
+import { CONTACT_FORM_EMAILS, EVENT_YEAR } from '@/content/constants'
 
 // Initialize Resend with API key
 const resend = new Resend(process.env.RESEND_API_KEY)
-
-// Define email addresses
-const TEAM_EMAIL = 'lead@ieeespac.ca'
-const FORM_SUBMISSION_EMAIL = 'formsubmission@ieeespac.ca'
 
 export async function POST(request: Request) {
   try {
@@ -18,8 +15,8 @@ export async function POST(request: Request) {
 
     // Send email to team
     const emailToTeam = await resend.emails.send({
-      from: `${body.fullName} <${FORM_SUBMISSION_EMAIL}>`,
-      to: TEAM_EMAIL,
+      from: `${body.fullName} <${CONTACT_FORM_EMAILS.FORM_SUBMISSION_EMAIL}>`,
+      to: CONTACT_FORM_EMAILS.TEAM_EMAIL,
       subject: body.subject,
       react: EmailTemplate({ message: body.message, toTeam: true }),
       text: '',
@@ -29,9 +26,9 @@ export async function POST(request: Request) {
     // If email to team is successful, send confirmation email to sender
     if (emailToTeam.data?.id) {
       await resend.emails.send({
-        from: `SPAC 2024 Team <${FORM_SUBMISSION_EMAIL}>`,
+        from: `SPAC ${EVENT_YEAR} Team <${CONTACT_FORM_EMAILS.FORM_SUBMISSION_EMAIL}>`,
         to: body.email,
-        subject: 'SPAC 2024 - Thank you for your message!',
+        subject: `SPAC ${EVENT_YEAR} - Thank you for your message!`,
         react: EmailTemplate({
           fullName: body.fullName,
           subject: body.subject,
@@ -39,7 +36,7 @@ export async function POST(request: Request) {
           toTeam: false,
         }),
         text: '',
-        reply_to: TEAM_EMAIL,
+        reply_to: CONTACT_FORM_EMAILS.TEAM_EMAIL,
       })
     }
 

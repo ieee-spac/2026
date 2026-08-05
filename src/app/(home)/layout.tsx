@@ -9,13 +9,13 @@ import { ThemeProvider } from '@/components/utils/theme-provider'
 import '@/app/(home)/globals.css'
 
 import { Toaster } from '@/components/shadcn/ui/sonner/sonner'
+import { METADATA } from '@/content/constants'
 
 const openSans = Open_Sans({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'IEEE SPAC 2025',
-  description:
-    'Official Website of the IEEE Student Professional Awareness Conference 2025, hosted in Ottawa, Ontario.',
+  title: METADATA.title,
+  description: METADATA.description,
 }
 
 export const viewport: Viewport = {

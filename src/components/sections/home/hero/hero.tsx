@@ -5,7 +5,7 @@ import { ShinyButton } from '@/components/twilight/shiny-button/shiny-button'
 import ShineBorder from '@/components/twilight/shine-pulse/shine-pulse'
 import { WarpBackground } from '@/components/twilight/warp-background/warp-background'
 
-import { HERO, LINKS } from '@/content/constants'
+import { EVENT_YEAR, HERO, LINKS } from '@/content/constants'
 
 export function Hero() {
   return (
@@ -63,7 +63,7 @@ export function Hero() {
                 rel="noopener noreferrer"
               >
                 <ShinyButton
-                  text="VIEW GALLERY 2025"
+                  text={`VIEW GALLERY ${EVENT_YEAR}`}
                 />
               </a>
             </div>
