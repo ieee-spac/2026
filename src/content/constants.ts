@@ -178,7 +178,6 @@ export interface ITIER_LOGO {
   dark: string
   alt: string
   url: string
-  overrides: string
 }
 
 export const TIER_PROPERTIES = {
@@ -211,7 +210,6 @@ export const PATRONS_DATA: Record<TIER_NAME, ITIER_LOGO[]> = {
       dark: '/assets/patron-logos/QNX-Logo-QNX-CORAL-RGB.svg',
       alt: 'QNX logo',
       url: 'https://blackberry.qnx.com',
-      overrides: 'w-full bobbing-animation-1',
     },
   ],
   [TIER_NAME.GOLD]: [
@@ -221,37 +219,32 @@ export const PATRONS_DATA: Record<TIER_NAME, ITIER_LOGO[]> = {
       dark: '/assets/patron-logos/redbull_logo.png',
       alt: 'Redbull logo',
       url: 'https://www.redbull.com/ca-en',
-      overrides: 'w-1/2 bobbing-animation-2',
     },
     {
       light: '/assets/patron-logos/lumentum_logo_light.png',
       dark: '/assets/patron-logos/lumentum_logo_dark.png',
       alt: 'Lumentum logo',
       url: 'https://www.lumentum.com/en',
-      overrides: 'w-1/2 bobbing-animation-2',
     },
   ],
   [TIER_NAME.SILVER]: [
     {
-      light: '/assets/patron-logos/ieee_life_members_affinity_groups_logo.png',
-      dark: '/assets/patron-logos/ieee_life_members_affinity_groups_logo.png',
+      light: '/assets/patron-logos/ieee_life_members_logo.png',
+      dark: '/assets/patron-logos/ieee_life_members_logo.png',
       alt: 'IEEE Life Members Affinity Groups Logo',
       url: 'https://life.ieee.org',
-      overrides: 'w-1/4 bobbing-animation-2',
     },
     {
       light: '/assets/patron-logos/CGI_logo.png',
       dark: '/assets/patron-logos/CGI_logo.png',
       alt: 'CGI Logo',
       url: 'https://www.cgi.com/canada/en-ca',
-      overrides: 'w-1/4 bobbing-animation-2',
     },
     {
       light: '/assets/patron-logos/nordion_logo_light.svg',
       dark: '/assets/patron-logos/nordion_logo_dark.svg',
       alt: 'Nordion Logo',
       url: 'https://www.nordion.com',
-      overrides: 'w-1/3 bobbing-animation-3',
     },
   ],
   [TIER_NAME.BRONZE]: [
@@ -260,7 +253,6 @@ export const PATRONS_DATA: Record<TIER_NAME, ITIER_LOGO[]> = {
       dark: '/assets/patron-logos/NAVCANADA_logo.png',
       alt: 'Nav Canada Logo',
       url: 'https://www.navcanada.ca/en/',
-      overrides: 'w-1/3 bobbing-animation-3',
     },
   ],
   [TIER_NAME.HOSTED]: [
@@ -269,21 +261,18 @@ export const PATRONS_DATA: Record<TIER_NAME, ITIER_LOGO[]> = {
       dark: '/assets/patron-logos/ieee_uottawa_logo_dark.svg',
       alt: 'uOttawa IEEE Logo',
       url: 'https://ieeeuottawa.ca',
-      overrides: 'w-1/4 bobbing-animation-2',
     },
     {
-      light: '/assets/patron-logos/CU_logo.png',
-      dark: '/assets/patron-logos/CU_logo.png',
+      light: '/assets/patron-logos/carleton_university_logo_light.svg',
+      dark: '/assets/patron-logos/carleton_university_logo_dark.svg',
       alt: 'Carleton University Logo',
       url: 'https://carleton.ca',
-      overrides: 'w-1/4 bobbing-animation-2',
     },
     {
-      light: '/assets/patron-logos/Alg_logo.png',
-      dark: '/assets/patron-logos/Alg_logo.png',
+      light: '/assets/patron-logos/algonquin_college_logo_green.png',
+      dark: '/assets/patron-logos/algonquin_college_logo_green.png',
       alt: 'Algonquin College Logo',
       url: 'https://www.algonquincollege.com',
-      overrides: 'w-1/4 bobbing-animation-2',
     },
 
   ],

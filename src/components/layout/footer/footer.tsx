@@ -29,8 +29,8 @@ export function Footer({
   }[]
 }) {
   return (
-    <footer className="border-t-[0.25px] border-secondary text-neutral-content transition-all duration-700 hover:shadow-[0_0px_15px_rgba(0,202,255,0.5)]">
-      <div className="mx-auto w-full max-w-7xl px-3 py-4 md:px-8">
+    <footer className="border-t border-primary/20 text-neutral-content transition-[border-color,box-shadow] duration-300 hover:border-primary/35 hover:shadow-[0_-18px_42px_-34px_rgba(0,202,255,0.65)]">
+      <div className="mx-auto w-full max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
 
         {/* LOGO and SOCIAL MEDIA ICONS in one row */}
         <div className="flex flex-wrap justify-between items-start">
@@ -39,7 +39,7 @@ export function Footer({
             <Link href="/" className="scroll-smooth">
               <Logo />
             </Link>
-            <p>{FOOTER.COPYRIGHT_TEXT}</p>
+            <p className="mt-2 text-sm text-muted-foreground">{FOOTER.COPYRIGHT_TEXT}</p>
           </aside>
 
           {/* SOCIAL MEDIA ICONS */}
@@ -51,7 +51,7 @@ export function Footer({
                 href={url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={cn('transition-all duration-700 hover:scale-125 p-4 text-2xl', className)}
+                className={cn('rounded-sm p-3 text-2xl transition-transform duration-300 hover:scale-110 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary', className)}
               >
                 <Icon />
               </a>
@@ -77,15 +77,9 @@ export function Footer({
             {
               ' '
             }
-            <a
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-yellow-500
-font-bold transition ease-in-out duration-700
-                     "
-            >
+            <span className="font-bold text-yellow-500">
               Gray Joslin
-            </a>
+            </span>
             .
             Re-designed & developed with 💜 by
             {
@@ -98,6 +92,17 @@ font-bold transition ease-in-out duration-700
               className="hover:text-purple-500 font-bold transition ease-in-out duration-700"
             >
               Saim Hashmi
+            </a>
+            {' '}
+            and
+            {' '}
+            <a
+              href="https://linkedin.com/in/waaberi/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-purple-500 font-bold transition ease-in-out duration-700"
+            >
+              Waaberi Ibrahim
             </a>
             .
           </p>

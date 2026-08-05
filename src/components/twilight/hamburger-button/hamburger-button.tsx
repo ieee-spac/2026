@@ -21,6 +21,7 @@ export function HamburgerButton({
       className="relative size-10 scale-150 text-secondary-content focus:outline-secondary md:hidden"
       onClick={() => setMenuOpen(!menuOpen)}
       aria-expanded={menuOpen}
+      aria-controls="mobile-navigation"
     >
       <span className="sr-only">{menuOpen ? 'Close menu' : 'Open menu'}</span>
       <div className="absolute left-1/2 top-1/2 block w-5 -translate-x-1/2 -translate-y-1/2">

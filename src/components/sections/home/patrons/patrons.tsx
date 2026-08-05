@@ -2,37 +2,39 @@
 import { ShinyButton } from '@/components/twilight/shiny-button/shiny-button'
 import { LogoSection } from '@/components/sections/home/patrons/patrons-tier'
 import { Spotlight } from '@/components/twilight/spotlight/spotlight'
+import { SectionHeading, SectionRail } from '@/components/sections/home/section-heading'
 
 import { LINKS, PATRONS, PATRONS_DATA, TIER_NAME, TIER_PROPERTIES } from '@/content/constants'
 
 export function Patrons() {
   return (
-    <div id={PATRONS.ID} className="mx-auto mt-20 max-w-3xl px-3 md:px-8">
-      <h2 className="mb-10 text-5xl font-bold text-primary sm:text-6xl">{PATRONS.TITLE}</h2>
-      <Spotlight
-        className="-left-20 top-[150rem] md:left-10 md:top-[140rem]"
-        fill="LightGoldenRodYellow"
-      />
-      <>
-        {Object.values(TIER_NAME).map(tier => (
-          <LogoSection
-            key={tier}
-            title={tier}
-            titleColor={TIER_PROPERTIES[tier].titleColor}
-            logos={PATRONS_DATA[tier]}
-            gradientClass={TIER_PROPERTIES[tier].gradientClass}
+    <section id={PATRONS.ID} className="relative mt-28 scroll-mt-28 overflow-x-clip">
+      <SectionRail>
+        <SectionHeading>{PATRONS.TITLE}</SectionHeading>
+
+        <div className="relative">
+          <Spotlight
+            className="-left-20 top-0 md:left-10 md:top-0"
+            fill="LightGoldenRodYellow"
           />
-        ))}
-      </>
-      <span className="inline-flex w-full justify-center">
-        <a
-          href={LINKS.PATRONAGE_PACKAGE}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <ShinyButton text="Become a Patron" />
-        </a>
-      </span>
-    </div>
+          {Object.values(TIER_NAME).map(tier => (
+            <LogoSection
+              key={tier}
+              title={tier}
+              titleColor={TIER_PROPERTIES[tier].titleColor}
+              logos={PATRONS_DATA[tier]}
+              gradientClass={TIER_PROPERTIES[tier].gradientClass}
+            />
+          ))}
+          <div className="flex w-full justify-center pt-2">
+            <ShinyButton
+              href={LINKS.PATRONAGE_PACKAGE}
+              external
+              text="Become a Patron"
+            />
+          </div>
+        </div>
+      </SectionRail>
+    </section>
   )
 }

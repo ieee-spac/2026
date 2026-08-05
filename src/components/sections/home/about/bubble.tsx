@@ -9,6 +9,8 @@ interface BubbleProps {
 }
 
 export function Bubble({ className, number, label, color, size }: BubbleProps) {
+  const filterId = `inset-shadow-${number}`
+
   return (
     <div className={`flex justify-center items-center ${className}`} style={{ width: size, height: size }}>
       <svg
@@ -18,6 +20,8 @@ export function Bubble({ className, number, label, color, size }: BubbleProps) {
         viewBox="0 0 200 200"
         fill="none"
         shapeRendering="geometricPrecision"
+        role="img"
+        aria-label={`${number} ${label}`}
       >
         <defs>
           {/* Define the gradient */}
@@ -54,7 +58,7 @@ export function Bubble({ className, number, label, color, size }: BubbleProps) {
           </mask>
 
           {/* Define the shadow filter */}
-          <filter id="inset-shadow" x="-2" y="-2" width="204" height="204" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
+          <filter id={filterId} x="-2" y="-2" width="204" height="204" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
             <feOffset dx="2" dy="2" />
             <feGaussianBlur stdDeviation="3" />
             <feComposite in2="SourceAlpha" operator="arithmetic" k2="-1" k3="1" />
@@ -69,7 +73,7 @@ export function Bubble({ className, number, label, color, size }: BubbleProps) {
         </defs>
 
         {/* Apply the shadow and mask to the circle */}
-        <g filter="url(#inset-shadow)">
+        <g filter={`url(#${filterId})`}>
           <circle cx="100" cy="100" r="99" fill={`url(#gradient-${number})`} mask={`url(#text-mask-${number})`} />
         </g>
       </svg>

@@ -5,6 +5,7 @@ import Image from 'next/image'
 
 import { Bubble } from '@/components/sections/home/about/bubble'
 import { ShinyButton } from '@/components/twilight/shiny-button/shiny-button'
+import { SectionHeading, SectionRail } from '@/components/sections/home/section-heading'
 
 import { ABOUT, LINKS } from '@/content/constants'
 
@@ -23,28 +24,26 @@ function SectionItem({
   isReversed: boolean
 }) {
   return (
-    <div
-      className={`flex ${isReversed ? 'flex-row-reverse' : 'flex-row'} w-full items-center justify-between`}
-    >
+    <div className={`flex w-full flex-col items-center justify-between gap-5 sm:gap-8 ${isReversed ? 'sm:flex-row-reverse' : 'sm:flex-row'}`}>
       {/* Text Container */}
-      <div className="flex w-1/2 flex-col justify-center">
-        <h4 className="text-xl font-semibold text-base-content sm:text-2xl md:text-3xl">
+      <div className="flex w-full flex-col justify-center sm:w-1/2">
+        <h4 className="text-2xl font-semibold tracking-[-0.02em] text-base-content md:text-3xl">
           {title}
         </h4>
-        <p className="text-sm dark:text-stone-400 text-stone-600 sm:text-base md:text-lg">
+        <p className="mt-2 text-base leading-relaxed text-stone-600 dark:text-stone-300 md:text-lg">
           {description}
         </p>
       </div>
 
       {/* Image Container */}
       <div
-        className={`flex w-1/2 ${isReversed ? 'mr-4 justify-start' : 'justify-end'} items-center `}
+        className={`flex w-full items-center justify-center sm:w-1/2 ${isReversed ? 'sm:justify-start' : 'sm:justify-end'}`}
       >
         {imgSrc && (
           <Image
             src={imgSrc}
             alt={imgAlt}
-            className="h-auto w-full max-w-[160px]"
+            className="h-auto w-full max-w-[180px]"
             width={0}
             height={0}
             sizes="100vw"
@@ -60,56 +59,57 @@ export function About() {
   return (
     <article
       id="about"
-      className="overflow-none mx-auto mt-20 max-w-3xl space-y-10 px-3 md:px-8"
+      className="mt-28 scroll-mt-28 overflow-x-clip"
     >
-      <section className="space-y-8">
-        <h2 className="text-5xl font-bold text-primary sm:text-6xl">{ABOUT.TITLE}</h2>
-        <p>{ABOUT.PARAGRAPHS[0]}</p>
-        <p>{ABOUT.PARAGRAPHS[1]}</p>
+      <SectionRail>
+        <SectionHeading>{ABOUT.TITLE}</SectionHeading>
 
-        {/* Colour Bubbles */}
-        <div className="flex w-full h-[45vw] max-h-80 md:ml-10">
-          {ABOUT.STAT_BUBBLES.map((item, index) => (
-            <Bubble
-              key={index}
-              className={item.className}
-              number={item.number}
-              label={item.label}
-              color={[item.color[0], item.color[1]]}
-              size={item.size}
+        <div className="space-y-14">
+          <section className="space-y-6">
+            <p className="max-w-[70ch] leading-7">{ABOUT.PARAGRAPHS[0]}</p>
+            <p className="max-w-[70ch] leading-7">{ABOUT.PARAGRAPHS[1]}</p>
+
+            {/* Colour Bubbles */}
+            <div className="flex w-full h-[45vw] max-h-80 md:ml-10">
+              {ABOUT.STAT_BUBBLES.map(item => (
+                <Bubble
+                  key={item.label}
+                  className={item.className}
+                  number={item.number}
+                  label={item.label}
+                  color={[item.color[0], item.color[1]]}
+                  size={item.size}
+                />
+              ))}
+            </div>
+
+            <p className="max-w-[70ch] leading-7 text-base-content">{ABOUT.PARAGRAPHS[2]}</p>
+          </section>
+
+          {/* A typical SPAC section */}
+          <section className="space-y-9">
+            <h3 className="pb-2 text-3xl font-semibold tracking-[-0.025em] sm:text-4xl">{ABOUT.SUBTITLE}</h3>
+            {ABOUT.SECTIONS.map((section, index) => (
+              <SectionItem
+                key={section.title}
+                title={section.title}
+                description={section.description}
+                imgSrc={section.imgSrc}
+                imgAlt={section.imgAlt}
+                isReversed={index % 2 !== 0}
+              />
+            ))}
+            <p className="max-w-[70ch] leading-7">{ABOUT.PARAGRAPHS[3]}</p>
+          </section>
+          <div className="flex w-full flex-wrap justify-center gap-2 md:text-nowrap lg:flex-nowrap">
+            <ShinyButton
+              href={LINKS.GALLERY}
+              external
+              text="View Gallery"
             />
-          ))}
+          </div>
         </div>
-
-        <p className="text-base-content">{ABOUT.PARAGRAPHS[2]}</p>
-      </section>
-
-      {/* A typical SPAC section */}
-      <section className="space-y-8">
-        <h3 className="pb-6 text-3xl font-semibold sm:text-4xl md:text-5xl">{ABOUT.SUBTITLE}</h3>
-        {ABOUT.SECTIONS.map((section, index) => (
-          <SectionItem
-            key={section.title}
-            title={section.title}
-            description={section.description}
-            imgSrc={section.imgSrc}
-            imgAlt={section.imgAlt}
-            isReversed={index % 2 !== 0}
-          />
-        ))}
-        <p>{ABOUT.PARAGRAPHS[3]}</p>
-      </section>
-      <div className="flex flex-wrap lg:flex-nowrap md:text-nowrap w-full justify-center gap-2">
-        <a
-          href={LINKS.GALLERY}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <ShinyButton
-            text="View Gallery"
-          />
-        </a>
-      </div>
+      </SectionRail>
     </article>
   )
 }

@@ -201,8 +201,23 @@
     @apply border-border;
   }
 
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 7rem;
+  }
+
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground antialiased;
+  }
+
+  ::selection {
+    color: hsl(var(--foreground));
+    background: hsl(var(--primary) / 0.3);
+  }
+
+  :focus-visible {
+    outline: 2px solid hsl(var(--primary));
+    outline-offset: 3px;
   }
 }
 
@@ -239,4 +254,66 @@
 
 .bobbing-animation-5 {
   animation: bobbing 2s ease-in-out infinite;
+}
+
+@keyframes warp-ray-travel {
+  from {
+    transform: translate3d(0, 100cqmax, 0);
+  }
+
+  to {
+    transform: translate3d(0, -100%, 0);
+  }
+}
+
+.warp-ray-motion {
+  animation: warp-ray-travel var(--warp-ray-duration) linear var(--warp-ray-delay) infinite;
+  animation-fill-mode: backwards;
+}
+
+@keyframes warp-depth-travel {
+  0% {
+    opacity: 0;
+    transform: translateZ(calc(var(--grid-size) * -11));
+  }
+
+  8% {
+    opacity: 0.18;
+  }
+
+  42% {
+    opacity: 0.56;
+  }
+
+  82% {
+    opacity: 0.96;
+  }
+
+  94% {
+    opacity: 0.72;
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateZ(calc(var(--grid-size) * 0.15));
+  }
+}
+
+.warp-depth-ring-motion {
+  animation: warp-depth-travel var(--depth-ring-duration) linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }

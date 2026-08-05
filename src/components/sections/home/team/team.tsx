@@ -1,21 +1,22 @@
 import { TEAM_MEMBERS } from '@/content/constants'
 
 import { TeamCard } from '@/components/sections/home/team/team-card'
+import { SectionHeading, SectionRail } from '@/components/sections/home/section-heading'
 
 export function Team() {
   return (
-    <div id="team" className="mx-auto mt-20 max-w-3xl px-3 md:px-8">
-      <h2 className="mb-10 text-5xl font-bold text-primary sm:text-6xl">
-        Meet The Team
-      </h2>
+    <section id="team" className="mt-28 scroll-mt-28">
+      <SectionRail>
+        <SectionHeading>Meet The Team</SectionHeading>
 
-      <div className="grid grid-cols-2 gap-4 md:grid-cols-2 lg:grid-cols-3">
-        {TEAM_MEMBERS.map((member) => {
-          return (
-            <TeamCard key={member.name} member={member} />
-          )
-        })}
-      </div>
-    </div>
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {TEAM_MEMBERS.map((member) => {
+            return (
+              <TeamCard key={member.name} member={member} />
+            )
+          })}
+        </div>
+      </SectionRail>
+    </section>
   )
 }

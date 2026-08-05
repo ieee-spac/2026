@@ -5,11 +5,19 @@ import { Resend } from 'resend'
 import { EmailTemplate } from '@/components/templates/email'
 import { CONTACT_FORM_EMAILS, EVENT_YEAR } from '@/content/constants'
 
-// Initialize Resend with API key
-const resend = new Resend(process.env.RESEND_API_KEY)
-
 export async function POST(request: Request) {
   try {
+    const apiKey = process.env.RESEND_API_KEY
+
+    if (!apiKey) {
+      return NextResponse.json(
+        { error: 'Email service is not configured.' },
+        { status: 503 },
+      )
+    }
+
+    const resend = new Resend(apiKey)
+
     // Parse request body
     const body = await request.json()
 

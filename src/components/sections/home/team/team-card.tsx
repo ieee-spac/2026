@@ -1,158 +1,113 @@
 'use client'
 
-import { FaGithub, FaInstagram, FaLinkedinIn } from 'react-icons/fa6'
 import { FaGlobe } from 'react-icons/fa'
+import { FaGithub, FaInstagram, FaLinkedinIn } from 'react-icons/fa6'
 import Image from 'next/image'
+
 import type { ITEAM_MEMBER } from '@/content/constants'
 
+function SocialLink({
+  href,
+  label,
+  children,
+}: {
+  href: string
+  label: string
+  children: React.ReactNode
+}) {
+  return (
+    <a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="flex size-11 items-center justify-center rounded-full border border-primary/20 bg-background/45 text-muted-foreground transition-[border-color,background-color,color,transform] duration-300 hover:scale-[1.04] hover:border-primary/50 hover:bg-primary/10 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+      aria-label={label}
+    >
+      {children}
+    </a>
+  )
+}
+
 export function TeamCard({ member }: { member: ITEAM_MEMBER }) {
-  // Handle case where member might be undefined
-  if (!member) {
+  if (!member)
     return null
-  }
 
   return (
-    <div className="group relative">
-      {/* ROLE */}
-      <div className="h-16 md:h-20 flex items-center justify-center mb-6">
-        <h3 className="text-center text-xl md:text-2xl font-bold text-fuchsia-700 transition-all duration-300 group-hover:text-fuchsia-600 leading-tight">
-          {member.role}
-        </h3>
-      </div>
+    <article className="group flex h-full flex-col rounded-xl border border-primary/15 bg-card/65 p-5 shadow-[0_22px_60px_-42px_rgba(0,98,155,0.8)] backdrop-blur-sm transition-[border-color,box-shadow,transform] duration-300 hover:-translate-y-1 hover:border-primary/40 hover:shadow-[0_26px_68px_-38px_rgba(0,202,255,0.45)]">
+      <p className="min-h-11 text-center text-sm font-semibold uppercase tracking-[0.11em] text-primary">
+        {member.role}
+      </p>
 
-      {/* CARD CONTAINER */}
-      <div className="relative bg-card/80 backdrop-blur-sm rounded-2xl p-6 border border-border transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-fuchsia-500/20 hover:border-fuchsia-500/30 hover:-translate-y-2 h-[26rem] md:h-[26rem] flex flex-col">
-        {/* ANIMATED BACKGROUND GLOW */}
-        <div className="absolute inset-0 bg-gradient-to-r from-fuchsia-500/0 via-cyan-500/0 to-green-500/0 rounded-2xl opacity-0 group-hover:opacity-20 transition-opacity duration-700 blur-xl"></div>
+      <div className="relative mx-auto mt-4 size-36">
+        <div className="size-full overflow-hidden rounded-full border border-primary/30 bg-background p-1 shadow-[0_16px_40px_-26px_rgba(0,202,255,0.7)]">
+          <Image
+            src={member.image || '/placeholder.svg?height=144&width=144&query=professional headshot'}
+            alt={member.name}
+            width={144}
+            height={144}
+            className="size-full rounded-full object-cover transition-transform duration-500 group-hover:scale-[1.04]"
+          />
+        </div>
 
-        {/* HEADSHOT CONTAINER */}
-        <div className="relative flex justify-center mb-4 flex-shrink-0">
-          <div className="relative w-32 h-32 md:w-36 md:h-36">
-            {/* ANIMATED RING */}
-            <div className="absolute inset-0 rounded-full bg-gradient-to-r from-fuchsia-500 via-cyan-500 to-green-500 opacity-0 group-hover:opacity-100 transition-all duration-700 animate-spin-slow p-1">
-              <div className="w-full h-full rounded-full bg-background transition-colors duration-300"></div>
-            </div>
+        {member.institution && (
+          <a
+            href={member.institution.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="absolute -right-1 -top-1 flex size-11 items-center justify-center rounded-full border border-primary/20 bg-background p-1.5 shadow-md transition-transform duration-300 hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+            aria-label={`Visit ${member.institution.name} website`}
+          >
+            <Image
+              src={member.institution.imageUrl || '/placeholder.svg?height=40&width=40&query=university logo'}
+              alt={`${member.institution.name} logo`}
+              width={40}
+              height={40}
+              className="size-full object-contain"
+            />
+          </a>
+        )}
 
-            {/* PROFILE IMAGE */}
-            <div className="relative z-10 w-full h-full rounded-full overflow-hidden ring-4 ring-border group-hover:ring-fuchsia-500/50 transition-all duration-500">
-              <Image
-                src={member.image || '/placeholder.svg?height=144&width=144&query=professional headshot'}
-                alt={member.name}
-                width={144}
-                height={144}
-                className="w-full h-full object-cover transition-all duration-500 group-hover:scale-110 group-hover:brightness-110"
-              />
-            </div>
-
-            {/* INSTITUTION LOGO - Hidden by default, appears on hover */}
-            {member.institution && (
-              <a
-                href={member.institution.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="absolute -top-2 -right-2 w-10 h-10 md:w-12 md:h-12 bg-background rounded-full p-1.5 shadow-lg opacity-0 scale-0 group-hover:opacity-100 group-hover:scale-100 transition-all duration-500 delay-200 hover:scale-110 z-20 cursor-pointer border border-border transition-colors duration-300"
-                aria-label={`Visit ${member.institution.name} website`}
-              >
-                <Image
-                  src={member.institution.imageUrl || '/placeholder.svg?height=40&width=40&query=university logo'}
-                  alt={`${member.institution.name} logo`}
-                  width={40}
-                  height={40}
-                  className="w-full h-full object-contain"
-                />
-              </a>
-            )}
-
-            {/* YEAR STANDING - Hidden by default, appears on hover */}
-            {member.yearStanding && (
-              <div className="absolute -bottom-2 -right-2 flex items-center justify-center w-8 h-8 md:w-10 md:h-10 rounded-full bg-muted border-2 border-border group-hover:border-fuchsia-500 transition-all duration-500 opacity-0 scale-0 group-hover:opacity-100 group-hover:scale-100 delay-300 z-20 transition-colors duration-300">
-                <span
-                  className={`
-                    ${
-              member.yearStanding.startsWith('1')
-                ? 'text-blue-400 group-hover:text-blue-300'
-                : member.yearStanding.startsWith('2')
-                  ? 'text-green-400 group-hover:text-green-300'
-                  : member.yearStanding.startsWith('3')
-                    ? 'text-yellow-400 group-hover:text-yellow-300'
-                    : member.yearStanding.startsWith('4')
-                      ? 'text-orange-400 group-hover:text-orange-300'
-                      : 'text-purple-400 group-hover:text-purple-300'
-              }
-                    font-bold text-xs md:text-sm transition-all duration-300 group-hover:drop-shadow-lg
-                  `}
-                >
-                  {member.yearStanding.slice(0, -2)}
-                  <sup className="text-xs">{member.yearStanding.slice(-2)}</sup>
-                </span>
-              </div>
-            )}
+        {member.yearStanding && (
+          <div
+            className="absolute -bottom-1 -right-1 flex min-w-11 items-center justify-center rounded-full border border-primary/20 bg-background px-2 py-1.5 text-xs font-bold text-primary shadow-md"
+            aria-label={`${member.yearStanding} year standing`}
+          >
+            {member.yearStanding}
           </div>
-        </div>
-
-        {/* NAME */}
-        <h4 className="text-center text-lg md:text-xl font-bold text-green-400 mb-4 transition-all duration-300 group-hover:text-green-300 group-hover:drop-shadow-lg flex-shrink-0 min-h-[3rem] md:min-h-[2rem] flex items-center justify-center leading-tight">
-          {member.name}
-        </h4>
-
-        {/* PROGRAM */}
-        <div className="flex-grow flex items-center justify-center mb-6 min-h-[3rem] md:min-h-[4rem]">
-          <p className="text-center text-sm md:text-base text-muted-foreground transition-all duration-300 group-hover:text-foreground px-2 leading-tight transition-colors duration-300">
-            {member.programName}
-          </p>
-        </div>
-
-        {/* SOCIAL MEDIA LINKS */}
-        <div className="flex justify-center space-x-3 md:space-x-4 flex-shrink-0 px-4 md:px-2 w-full max-w-[280px] md:max-w-[200px] mx-auto">
-          {member.linkedin && (
-            <a
-              href={member.linkedin}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center justify-center w-11 h-11 md:w-10 md:h-10 rounded-full bg-muted text-sky-400 border border-border transition-all duration-300 hover:bg-sky-500 hover:text-white hover:scale-[1.02] md:hover:scale-110 hover:shadow-lg hover:shadow-sky-500/30 hover:border-sky-400 cursor-pointer z-30 transition-colors duration-300"
-              aria-label="LinkedIn"
-            >
-              <FaLinkedinIn className="text-base md:text-lg" />
-            </a>
-          )}
-          {member.github && (
-            <a
-              href={member.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center justify-center w-11 h-11 md:w-10 md:h-10 rounded-full bg-muted text-green-400 border border-border transition-all duration-300 hover:bg-green-500 hover:text-white hover:scale-[1.02] md:hover:scale-110 hover:shadow-lg hover:shadow-green-500/30 hover:border-green-400 cursor-pointer z-30 transition-colors duration-300"
-              aria-label="GitHub"
-            >
-              <FaGithub className="text-base md:text-lg" />
-            </a>
-          )}
-          {member.website && (
-            <a
-              href={member.website}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center justify-center w-11 h-11 md:w-10 md:h-10 rounded-full bg-muted text-purple-400 border border-border transition-all duration-300 hover:bg-purple-500 hover:text-white hover:scale-[1.02] md:hover:scale-110 hover:shadow-lg hover:shadow-purple-500/30 hover:border-purple-400 cursor-pointer z-30 transition-colors duration-300"
-              aria-label="Website"
-            >
-              <FaGlobe className="text-base md:text-lg" />
-            </a>
-          )}
-          {member.instagram && (
-            <a
-              href={member.instagram}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center justify-center w-11 h-11 md:w-10 md:h-10 rounded-full bg-muted text-pink-400 border border-border transition-all duration-300 hover:bg-pink-500 hover:text-white hover:scale-[1.02] md:hover:scale-110 hover:shadow-lg hover:shadow-pink-500/30 hover:border-pink-400 cursor-pointer z-30 transition-colors duration-300"
-              aria-label="Instagram"
-            >
-              <FaInstagram className="text-base md:text-lg" />
-            </a>
-          )}
-        </div>
-
-        {/* HOVER OVERLAY EFFECT */}
-        <div className="absolute inset-0 rounded-2xl bg-gradient-to-t from-fuchsia-500/10 via-transparent to-cyan-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+        )}
       </div>
-    </div>
+
+      <div className="mt-5 flex flex-1 flex-col text-center">
+        <h3 className="text-xl font-bold tracking-[-0.02em] text-foreground">
+          {member.name}
+        </h3>
+        <p className="mx-auto mt-2 max-w-[28ch] text-sm leading-relaxed text-muted-foreground">
+          {member.programName}
+        </p>
+      </div>
+
+      <div className="mt-6 flex flex-wrap justify-center gap-3">
+        {member.linkedin && (
+          <SocialLink href={member.linkedin} label={`${member.name} on LinkedIn`}>
+            <FaLinkedinIn aria-hidden="true" className="text-lg" />
+          </SocialLink>
+        )}
+        {member.github && (
+          <SocialLink href={member.github} label={`${member.name} on GitHub`}>
+            <FaGithub aria-hidden="true" className="text-lg" />
+          </SocialLink>
+        )}
+        {member.website && (
+          <SocialLink href={member.website} label={`${member.name}'s website`}>
+            <FaGlobe aria-hidden="true" className="text-lg" />
+          </SocialLink>
+        )}
+        {member.instagram && (
+          <SocialLink href={member.instagram} label={`${member.name} on Instagram`}>
+            <FaInstagram aria-hidden="true" className="text-lg" />
+          </SocialLink>
+        )}
+      </div>
+    </article>
   )
 }

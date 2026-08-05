@@ -28,6 +28,7 @@ import {
 } from '@/components/ui/form'
 
 import { CONTACT_FORM } from '@/content/constants'
+import { SectionHeading, SectionRail } from '@/components/sections/home/section-heading'
 
 const formSchema = z.object({
   fullName: z.string().trim().min(1, {
@@ -71,18 +72,19 @@ export function Contact() {
         body: JSON.stringify(values),
       })
       const result = await response.json()
-      if (result.error) {
-        toast('Error sending message. Please try again.')
-      }
-      else {
-        toast('🥳 Message sent successfully!', {
-          description: `Confirmation email has been sent to ${values.email}. ✅`,
-        })
-        form.reset()
-      }
+      if (!response.ok || result.error)
+        throw new Error(result.error || 'Message request failed')
+
+      toast('🥳 Message sent successfully!', {
+        description: `Confirmation email has been sent to ${values.email}. ✅`,
+      })
+      form.reset()
     }
     catch (error) {
       console.error('Error:', error)
+      toast.error('Message could not be sent.', {
+        description: 'Your message is still here. Check your connection and try again.',
+      })
     }
     finally { setIsSubmitting(false) }
   }
@@ -90,95 +92,100 @@ export function Contact() {
   return (
     <div
       id="contact"
-      className="overflow-none mx-auto my-20 max-w-3xl space-y-10 px-3 md:px-8 "
+      className="my-28 scroll-mt-28"
     >
-      <h3 className="text-5xl font-bold text-primary sm:text-6xl">{CONTACT_FORM.TITLE}</h3>
-      <Card className="transition-all duration-700 ease-in-out hover:drop-shadow-[0_0px_5px_rgba(0,202,255,1)]">
-        <CardHeader>
-          <CardTitle className="font-bold text-xl text-neutral-800 dark:text-neutral-200">{CONTACT_FORM.SUBTITLE}</CardTitle>
-          <CardDescription
-            className="text-neutral-600 text-sm mt-2 dark:text-neutral-300"
-          >
-            {CONTACT_FORM.DESCRIPTION}
-          </CardDescription>
-        </CardHeader>
-        <CardContent>
-          <Form {...form}>
-            <form
-              onSubmit={form.handleSubmit(onSubmit)}
-              className="space-y-6"
+      <SectionRail>
+        <SectionHeading>{CONTACT_FORM.TITLE}</SectionHeading>
+
+        <Card className="rounded-xl border-primary/20 bg-card/70 shadow-[0_24px_70px_-40px_rgba(0,98,155,0.8)] transition-[border-color,box-shadow] duration-300 hover:border-primary/35 hover:shadow-[0_28px_80px_-40px_rgba(0,202,255,0.55)]">
+          <CardHeader>
+            <CardTitle className="font-bold text-xl text-neutral-800 dark:text-neutral-200">{CONTACT_FORM.SUBTITLE}</CardTitle>
+            <CardDescription
+              className="text-neutral-600 text-sm mt-2 dark:text-neutral-300"
             >
-              <div className="flex flex-col w-full space-y-2 xs:space-y-0 xs:space-x-6 xs:flex-row">
+              {CONTACT_FORM.DESCRIPTION}
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <Form {...form}>
+              <form
+                onSubmit={form.handleSubmit(onSubmit)}
+                className="space-y-6"
+              >
+                <div className="flex flex-col w-full space-y-2 xs:space-y-0 xs:space-x-6 xs:flex-row">
+                  <FormField
+                    control={form.control}
+                    name="fullName"
+                    render={({ field }) => (
+                      <FormItem className="w-full">
+                        <FormLabel>{CONTACT_FORM.FIELDS.NAME.label}</FormLabel>
+                        <FormControl>
+                          <Input autoComplete="name" placeholder={CONTACT_FORM.FIELDS.NAME.placeholder} {...field} />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                  <FormField
+                    control={form.control}
+                    name="email"
+                    render={({ field }) => (
+                      <FormItem className="w-full">
+                        <FormLabel>{CONTACT_FORM.FIELDS.EMAIL.label}</FormLabel>
+                        <FormControl>
+                          <Input type="email" autoComplete="email" inputMode="email" placeholder={CONTACT_FORM.FIELDS.EMAIL.placeholder} {...field} />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                </div>
+
                 <FormField
                   control={form.control}
-                  name="fullName"
+                  name="subject"
                   render={({ field }) => (
-                    <FormItem className="w-full">
-                      <FormLabel>{CONTACT_FORM.FIELDS.NAME.label}</FormLabel>
+                    <FormItem>
+                      <FormLabel>{CONTACT_FORM.FIELDS.SUBJECT.label}</FormLabel>
                       <FormControl>
-                        <Input placeholder={CONTACT_FORM.FIELDS.NAME.placeholder} {...field} />
+                        <Input placeholder={CONTACT_FORM.FIELDS.SUBJECT.placeholder} {...field} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
                   )}
                 />
+
                 <FormField
                   control={form.control}
-                  name="email"
+                  name="message"
                   render={({ field }) => (
-                    <FormItem className="w-full">
-                      <FormLabel>{CONTACT_FORM.FIELDS.EMAIL.label}</FormLabel>
+                    <FormItem>
+                      <FormLabel>{CONTACT_FORM.FIELDS.MESSAGE.label}</FormLabel>
                       <FormControl>
-                        <Input placeholder={CONTACT_FORM.FIELDS.EMAIL.placeholder} {...field} />
+                        <Textarea placeholder={CONTACT_FORM.FIELDS.MESSAGE.placeholder} {...field} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
                   )}
                 />
-              </div>
 
-              <FormField
-                control={form.control}
-                name="subject"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>{CONTACT_FORM.FIELDS.SUBJECT.label}</FormLabel>
-                    <FormControl>
-                      <Input placeholder={CONTACT_FORM.FIELDS.SUBJECT.placeholder} {...field} />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-
-              <FormField
-                control={form.control}
-                name="message"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>{CONTACT_FORM.FIELDS.MESSAGE.label}</FormLabel>
-                    <FormControl>
-                      <Textarea placeholder={CONTACT_FORM.FIELDS.MESSAGE.placeholder} {...field} />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-            </form>
-          </Form>
-        </CardContent>
-        <CardFooter className="place-content-center">
-          <Button
-            variant="outline"
-            size="lg"
-            onClick={() => form.handleSubmit(onSubmit)()}
-            disabled={isSubmitting}
-          >
-            {isSubmitting ? <Loader2 className="animate-spin mr-2 size-4" /> : <EnvelopeOpenIcon className="mr-2 size-4" />}
-            {isSubmitting ? 'Sending...' : `${CONTACT_FORM.SUBMIT_BUTTON_TEXT}`}
-          </Button>
-        </CardFooter>
-      </Card>
+                <CardFooter className="place-content-center px-0 pb-0 pt-2">
+                  <Button
+                    type="submit"
+                    variant="outline"
+                    size="lg"
+                    className="min-w-40 shadow-[0_16px_36px_-24px_rgba(0,202,255,0.7)] hover:scale-[1.02]"
+                    disabled={isSubmitting}
+                  >
+                    {isSubmitting ? <Loader2 className="mr-2 size-4 animate-spin" /> : <EnvelopeOpenIcon className="mr-2 size-4" />}
+                    {isSubmitting ? 'Sending...' : `${CONTACT_FORM.SUBMIT_BUTTON_TEXT}`}
+                  </Button>
+                </CardFooter>
+              </form>
+            </Form>
+          </CardContent>
+        </Card>
+      </SectionRail>
     </div>
   )
 }

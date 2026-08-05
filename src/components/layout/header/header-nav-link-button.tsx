@@ -13,18 +13,19 @@ export function HeaderNavLinkButton({
   onCloseMenu: () => void
 }) {
   return (
-    <Link key={name} href={path} scroll>
-      <Button
-        size="lg"
-        className="text-primary hover:text-primary-foreground uppercase
-              shadow-sm border border-auxiliary md:border-hidden
-              py-8 md:py-6 md:px-5 md:hover:scale-110 w-full
-              bg-background/[0.25] md:dark:bg-black/[0.25]
-              hover:dark:bg-primary group-hover:shadow-[0_0px_5px_rgba(0,202,255,1)]"
+    <Button
+      asChild
+      size="lg"
+      className="h-12 w-full border border-primary/25 bg-background/40 px-5 py-3 uppercase text-primary shadow-none transition-[background-color,color,border-color,transform] duration-300 hover:scale-[1.02] hover:border-primary/50 hover:bg-primary hover:text-primary-foreground md:h-11 md:border-transparent md:bg-transparent md:px-4"
+    >
+      <Link
+        key={name}
+        href={path}
+        scroll
         onClick={onCloseMenu}
       >
         {name}
-      </Button>
-    </Link>
+      </Link>
+    </Button>
   )
 }
