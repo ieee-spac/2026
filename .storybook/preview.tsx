@@ -1,12 +1,12 @@
 import React from 'react'
-import type { Preview } from '@storybook/react'
+import type { Preview } from '@storybook/nextjs-vite'
 
 import { ThemeProvider } from 'next-themes'
 import { withThemeByClassName } from '@storybook/addon-themes' // Wide button with a pen and text. Toggles both Preview Components and Preview Background
-import { type ThemeVars, themes } from '@storybook/theming'
+import { type ThemeVars, themes } from 'storybook/theming'
 import { DARK_MODE_EVENT_NAME } from 'storybook-dark-mode'
 
-import { DocsContainer, type DocsContextProps } from '@storybook/blocks'
+import { DocsContainer, type DocsContextProps } from '@storybook/addon-docs/blocks'
 
 import { customViewports } from './custom-viewports'
 import {
@@ -55,7 +55,7 @@ const preview: Preview = {
     },
     // https://storybook.js.org/docs/essentials/viewport
     viewport: {
-      viewports: {
+      options: {
         ...customViewports,
       },
     },
@@ -97,18 +97,6 @@ const preview: Preview = {
     },
     // https://storybook.js.org/docs/essentials/backgrounds
     backgrounds: {
-      // disable: true,
-      // default: 'twitter',
-      values: [
-        {
-          name: 'twitter',
-          value: '#00aced',
-        },
-        {
-          name: 'facebook',
-          value: '#3b5998',
-        },
-      ],
       grid: {
         // disable: true,
         // cellSize: 20,
@@ -116,6 +104,17 @@ const preview: Preview = {
         // cellAmount: 5,
         // offsetX: 16, // Default is 0 if story has 'fullscreen' layout, 16 if layout is 'padded'
         // offsetY: 16, // Default is 0 if story has 'fullscreen' layout, 16 if layout is 'padded'
+      },
+      options: {
+        twitter: {
+          name: 'twitter',
+          value: '#00aced',
+        },
+
+        facebook: {
+          name: 'facebook',
+          value: '#3b5998',
+        },
       },
     },
     // fix for theming docs page found here: https://github.com/hipstersmoothie/storybook-dark-mode/issues/282#issuecomment-2208816632

@@ -72,8 +72,19 @@ export function Contact() {
         body: JSON.stringify(values),
       })
       const result = await response.json()
-      if (!response.ok || result.error)
-        throw new Error(result.error || 'Message request failed')
+      const responseError
+        = typeof result === 'object'
+        && result !== null
+        && 'error' in result
+          ? result.error
+          : undefined
+      if (!response.ok || responseError) {
+        throw new Error(
+          typeof responseError === 'string'
+            ? responseError
+            : 'Message request failed',
+        )
+      }
 
       toast('🥳 Message sent successfully!', {
         description: `Confirmation email has been sent to ${values.email}. ✅`,

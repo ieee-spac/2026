@@ -1,5 +1,6 @@
 import createMDX from 'fumadocs-mdx/config'
 import { remarkInstall } from 'fumadocs-docgen'
+import { initOpenNextCloudflareForDev } from '@opennextjs/cloudflare'
 
 const withMDX = createMDX({
   rootContentPath: './src/content',
@@ -13,13 +14,12 @@ const withMDX = createMDX({
 
 /** @type {import('next').NextConfig} */
 const config = {
-  reactStrictMode: true,
-  // TODO: Eliminate this workaround
-  eslint: {
-    // Warning: This allows production builds to successfully complete even if
-    // your project has ESLint errors.
-    ignoreDuringBuilds: true,
+  experimental: {
+    useTypeScriptCli: false,
   },
+  reactStrictMode: true,
 }
 
 export default withMDX(config)
+
+initOpenNextCloudflareForDev()

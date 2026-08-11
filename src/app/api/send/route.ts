@@ -1,9 +1,17 @@
 import process from 'node:process'
 import { NextResponse } from 'next/server'
 import { Resend } from 'resend'
+import z from 'zod'
 
 import { EmailTemplate } from '@/components/templates/email'
 import { CONTACT_FORM_EMAILS, EVENT_YEAR } from '@/content/constants'
+
+const contactRequestSchema = z.object({
+  fullName: z.string().trim().min(1).max(255),
+  email: z.string().trim().email().max(255),
+  subject: z.string().trim().min(1).max(255),
+  message: z.string().trim().min(1).max(255),
+})
 
 export async function POST(request: Request) {
   try {
@@ -18,8 +26,14 @@ export async function POST(request: Request) {
 
     const resend = new Resend(apiKey)
 
-    // Parse request body
-    const body = await request.json()
+    const parsedBody = contactRequestSchema.safeParse(await request.json())
+    if (!parsedBody.success) {
+      return NextResponse.json(
+        { error: 'Invalid contact form submission.' },
+        { status: 400 },
+      )
+    }
+    const body = parsedBody.data
 
     // Send email to team
     const emailToTeam = await resend.emails.send({

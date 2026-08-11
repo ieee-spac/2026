@@ -1,8 +1,11 @@
 name: Visual Tests
 
 on:
-  push:
-    branches: main
+  # Automatic Chromatic publishing is paused until the team decides how it
+  # wants to use visual regression testing and configures a project token.
+  # push:
+  #   branches: main
+  workflow_dispatch:
 
 jobs:
   release:
