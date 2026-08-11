@@ -9,9 +9,10 @@
   },
   "scripts": {
     "build": "next build --webpack",
-    "cloudflare:deploy": "node scripts/alchemy.mjs deploy --stage prod",
-    "cloudflare:destroy": "node scripts/alchemy.mjs destroy --stage prod",
-    "cloudflare:plan": "node scripts/alchemy.mjs plan --stage prod",
+    "cloudflare:build": "opennextjs-cloudflare build",
+    "cloudflare:deploy": "opennextjs-cloudflare deploy",
+    "cloudflare:upload": "opennextjs-cloudflare upload",
+    "cloudflare:types": "wrangler types --env-interface CloudflareEnv cloudflare-env.d.ts",
     "dev": "next dev --webpack",
     "start": "next start",
     "lint": "eslint .",
@@ -99,7 +100,8 @@
     "tailwindcss": "^3.4.6",
     "tailwindcss-animate": "^1.0.7",
     "typescript": "^5.5.4",
-    "vite": "^8.2.1"
+    "vite": "^8.2.1",
+    "wrangler": "^4.121.0"
   },
   "lint-staged": {
     "*": "eslint --cache --fix"
