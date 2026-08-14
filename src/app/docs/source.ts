@@ -1,4 +1,3 @@
-import { map } from '@root/.map'
 import { createMDXSource } from 'fumadocs-mdx'
 import { loader } from 'fumadocs-core/source'
 import { createElement } from 'react'
@@ -29,5 +28,5 @@ export const { getPage, getPages, pageTree } = loader({
       return createElement(icons[icon as keyof typeof icons])
   },
 
-  source: createMDXSource(map),
+  source: createMDXSource({}),
 })

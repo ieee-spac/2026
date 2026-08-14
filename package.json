@@ -8,8 +8,8 @@
     "url": "https://github.com/ieee-spac/2024.git"
   },
   "scripts": {
-    "build": "next build --webpack",
-    "dev": "next dev --webpack",
+    "build": "next build",
+    "dev": "next dev",
     "start": "next start",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
@@ -23,7 +23,7 @@
   "dependencies": {
     "@hookform/resolvers": "^3.9.0",
     "@types/eslint": "^9.6.1",
-    "next": "^16.3.0",
+    "next": "^16.3.1",
     "next-themes": "^0.3.0",
     "pnpm": "^10.14.0",
     "react": "^18.3.1",
@@ -73,7 +73,6 @@
     "eslint-plugin-storybook": "10.5.7",
     "framer-motion": "^11.3.8",
     "fumadocs-core": "12.5.4",
-    "fumadocs-docgen": "^1.1.0",
     "fumadocs-mdx": "8.2.34",
     "fumadocs-ui": "12.5.4",
     "husky": "^9.1.1",
