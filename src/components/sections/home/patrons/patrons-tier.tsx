@@ -1,3 +1,4 @@
+import * as React from 'react'
 import Image from 'next/image'
 import { useTheme } from 'next-themes'
 import { cn } from '@/components/utils/cn'
@@ -18,6 +19,7 @@ export function LogoSection({
   logos,
   gradientClass,
 }: LogoSectionProps) {
+  const [mounted, setMounted] = React.useState(false)
   const { resolvedTheme } = useTheme()
   const logoCount = logos?.length ?? 0
   const gridColumns = logoCount === 1
@@ -25,6 +27,8 @@ export function LogoSection({
     : logoCount === 2
       ? 'grid-cols-1 sm:grid-cols-2'
       : 'grid-cols-1 sm:grid-cols-3'
+
+  React.useEffect(() => setMounted(true), [])
 
   return (
     <section className="mb-10">
@@ -49,26 +53,39 @@ export function LogoSection({
             href={logo.url}
             target="_blank"
             rel="noopener noreferrer"
+            aria-label={logo.alt}
             className={cn(
               'flex min-h-36 w-full items-center justify-center rounded-sm p-6 transition-[background-color,transform] duration-300 hover:scale-[1.025] hover:bg-primary/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary',
               logoCount === 1 && 'max-w-2xl justify-self-center sm:min-h-48',
             )}
           >
-            <Image
-              src={getLogoByTheme(resolvedTheme, logo)}
-              alt={logo.alt}
-              className={cn(
-                'h-24 w-full object-contain transition-transform duration-300',
-                logoCount === 1 && 'h-32 sm:h-40',
-              )}
-              width={640}
-              height={240}
-              sizes={logoCount === 1
-                ? '(min-width: 640px) 60vw, 90vw'
-                : logoCount === 2
-                  ? '(min-width: 640px) 45vw, 90vw'
-                  : '(min-width: 640px) 30vw, 90vw'}
-            />
+            {mounted
+              ? (
+                  <Image
+                    src={getLogoByTheme(resolvedTheme, logo)}
+                    alt={logo.alt}
+                    className={cn(
+                      'h-24 w-full object-contain transition-transform duration-300',
+                      logoCount === 1 && 'h-32 sm:h-40',
+                    )}
+                    width={640}
+                    height={240}
+                    sizes={logoCount === 1
+                      ? '(min-width: 640px) 60vw, 90vw'
+                      : logoCount === 2
+                        ? '(min-width: 640px) 45vw, 90vw'
+                        : '(min-width: 640px) 30vw, 90vw'}
+                  />
+                )
+              : (
+                  <span
+                    aria-hidden
+                    className={cn(
+                      'block h-24 w-full',
+                      logoCount === 1 && 'h-32 sm:h-40',
+                    )}
+                  />
+                )}
           </a>
         ))}
       </div>
