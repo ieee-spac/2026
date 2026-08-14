@@ -1,5 +1,5 @@
 'use client'
-import { useInView, useReducedMotion } from 'framer-motion'
+import { useReducedMotion } from 'framer-motion'
 
 import type { HTMLAttributes } from 'react'
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
@@ -49,7 +49,7 @@ function Beam({
           '--width': cssWidth,
           '--aspect-ratio': `${aspectRatio}`,
           '--background': `linear-gradient(hsl(${hue} 80% 60%), transparent)`,
-          '--warp-ray-delay': `${delay}s`,
+          '--warp-ray-delay': `${-delay}s`,
           '--warp-ray-duration': `${duration}s`,
           'animationPlayState': motionActive ? 'running' : 'paused',
           'transform': motionEnabled ? undefined : 'translate3d(0, 25cqmax, 0)',
@@ -65,6 +65,7 @@ function Beam({
 }
 
 const DEPTH_RING_DURATION = 18
+const DEPTH_RING_RADIUS = 'clamp(10px, 1.2vw, 16px)'
 
 const DEPTH_RINGS = Array.from({ length: 10 }, (_, index) => ({
   depth: index + 1,
@@ -88,9 +89,25 @@ export const WarpBackground: React.FC<WarpBackgroundProps> = ({
   ...props
 }) => {
   const containerRef = useRef<HTMLDivElement>(null)
-  const isInView = useInView(containerRef, { amount: 0.05 })
   const reduceMotion = useReducedMotion()
+  const [isInView, setIsInView] = useState(true)
   const [isPageVisible, setIsPageVisible] = useState(true)
+
+  useEffect(() => {
+    const container = containerRef.current
+
+    if (!container || typeof IntersectionObserver === 'undefined')
+      return
+
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry)
+        setIsInView(entry.isIntersecting)
+    }, { threshold: 0.05 })
+
+    observer.observe(container)
+
+    return () => observer.disconnect()
+  }, [])
 
   useEffect(() => {
     const updateVisibility = () => setIsPageVisible(document.visibilityState === 'visible')
@@ -132,7 +149,7 @@ export const WarpBackground: React.FC<WarpBackgroundProps> = ({
   return (
     <div ref={containerRef} className={cn('relative rounded border p-20', className)} {...props}>
       <div aria-hidden="true" className="pointer-events-none absolute inset-0 z-0 overflow-hidden">
-        <div className="absolute -inset-px [filter:blur(0.45px)]">
+        <div className="absolute -inset-px">
           <div
             data-warp-depth-motion={motionActive ? 'running' : motionEnabled ? 'paused' : 'disabled'}
             data-warp-motion={motionActive ? 'running' : motionEnabled ? 'paused' : 'disabled'}
@@ -228,6 +245,7 @@ export const WarpBackground: React.FC<WarpBackgroundProps> = ({
                     '--depth-ring-play-state': motionActive ? 'running' : 'paused',
                     '--depth-ring-light-opacity': ring.lightOpacity,
                     '--depth-ring-dark-opacity': ring.darkOpacity,
+                    '--depth-ring-radius': DEPTH_RING_RADIUS,
                   } as React.CSSProperties
                 }
                 className={cn(
@@ -238,7 +256,7 @@ export const WarpBackground: React.FC<WarpBackgroundProps> = ({
               >
                 <div
                   className={cn(
-                    'relative size-full overflow-hidden rounded-[clamp(10px,1.2vw,16px)] border border-[hsla(var(--auxiliary),0.22)] shadow-[inset_0_0_18px_hsla(var(--auxiliary),0.055)] dark:border-[hsl(var(--primary)/0.18)] dark:shadow-[inset_0_0_20px_hsl(var(--primary)/0.045)]',
+                    'relative size-full overflow-hidden rounded-[var(--depth-ring-radius)] border border-[hsla(var(--auxiliary),0.22)] shadow-[inset_0_0_18px_hsla(var(--auxiliary),0.055)] dark:border-[hsl(var(--primary)/0.18)] dark:shadow-[inset_0_0_20px_hsl(var(--primary)/0.045)]',
                     motionEnabled
                       ? 'opacity-[0.85] dark:opacity-95'
                       : 'opacity-[var(--depth-ring-light-opacity)] dark:opacity-[var(--depth-ring-dark-opacity)]',
@@ -249,9 +267,10 @@ export const WarpBackground: React.FC<WarpBackgroundProps> = ({
                     duration={11}
                     delay={ring.shineDelay}
                     borderWidth={1}
+                    borderRadius="var(--depth-ring-radius)"
                     colorFrom="hsl(var(--primary))"
                     colorTo="hsla(var(--auxiliary), 0.76)"
-                    className="opacity-[0.85] [filter:drop-shadow(0_2px_2px_hsla(var(--auxiliary),0.18))] after:[animation-play-state:var(--depth-ring-play-state)] dark:opacity-100 dark:[filter:drop-shadow(0_2px_3px_hsl(var(--primary)/0.28))]"
+                    className="opacity-[0.85] after:[animation-play-state:var(--depth-ring-play-state)] after:[filter:drop-shadow(0_2px_2px_hsla(var(--auxiliary),0.18))] dark:opacity-100 dark:after:[filter:drop-shadow(0_2px_3px_hsl(var(--primary)/0.28))]"
                   />
                 </div>
               </div>
