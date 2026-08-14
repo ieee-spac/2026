@@ -151,13 +151,13 @@ export const ABOUT = {
       imgSrc: '/assets/twilight-design-system/networking_booths_image.svg',
       imgAlt: 'Networking',
     },
-    {
-      title: 'Send your resume to Blackberry QNX',
-      description:
-        'Upon ticket registration, all attendees will get an email to upload their resume to be sent to our Platinum Sponsor, Blackberry QNX.',
-      imgSrc: '/assets/twilight-design-system/resume_image.png',
-      imgAlt: 'Networking',
-    },
+    // {
+    //   title: 'Send your resume to Blackberry QNX',
+    //   description:
+    //     'Upon ticket registration, all attendees will get an email to upload their resume to be sent to our Platinum Sponsor, Blackberry QNX.',
+    //   imgSrc: '/assets/twilight-design-system/resume_image.png',
+    //   imgAlt: 'Networking',
+    // },
   ],
   BUTTONS: [
     { text: 'SPAC Tickets', href: LINKS.SPAC_TICKETS },
