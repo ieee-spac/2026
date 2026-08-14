@@ -1,6 +1,5 @@
 import createMDX from 'fumadocs-mdx/config'
 import { remarkInstall } from 'fumadocs-docgen'
-import { initOpenNextCloudflareForDev } from '@opennextjs/cloudflare'
 
 const withMDX = createMDX({
   rootContentPath: './src/content',
@@ -21,5 +20,3 @@ const config = {
 }
 
 export default withMDX(config)
-
-initOpenNextCloudflareForDev()
