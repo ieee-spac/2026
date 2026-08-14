@@ -256,6 +256,151 @@
   animation: bobbing 2s ease-in-out infinite;
 }
 
+@property --patrons-border-angle {
+  syntax: '<angle>';
+  inherits: false;
+  initial-value: 0deg;
+}
+
+@keyframes patrons-border-travel {
+  to {
+    --patrons-border-angle: 360deg;
+  }
+}
+
+.patrons-border-light {
+  padding: 1.5px;
+  background: conic-gradient(
+    from var(--patrons-border-angle),
+    transparent 0deg,
+    transparent 316deg,
+    hsl(var(--primary) / 0.14) 322deg,
+    hsl(var(--primary) / 0.95) 342deg,
+    hsl(var(--tertiary)) 352deg,
+    transparent 360deg
+  );
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  mask-composite: exclude;
+  animation: patrons-border-travel 16s linear infinite;
+  filter: drop-shadow(0 3px 5px hsl(var(--primary) / 0.28));
+}
+
+.patrons-planet {
+  --planet-color: hsl(var(--primary));
+  --planet-lit-face: color-mix(in srgb, var(--planet-color) 88%, white);
+  --planet-edge: color-mix(in srgb, var(--planet-color) 58%, black);
+
+  background-color: var(--planet-color);
+  background-image: radial-gradient(
+    circle at 38% 36%,
+    var(--planet-lit-face) 0%,
+    var(--planet-color) 52%,
+    var(--planet-edge) 100%
+  );
+}
+
+.patrons-planet-neutral {
+  --planet-color: color-mix(in srgb, hsl(var(--foreground)) 62%, hsl(var(--background)));
+}
+
+.patrons-planet-primary {
+  --planet-color: hsl(var(--primary));
+}
+
+.patrons-planet-tertiary {
+  --planet-color: hsl(var(--tertiary));
+}
+
+.patrons-orbit-track {
+  --orbit-color: hsl(var(--primary));
+  --orbit-trail-angle: 0deg;
+}
+
+.patrons-orbit-track::before {
+  position: absolute;
+  inset: -1px;
+  padding: 2px;
+  border-radius: inherit;
+  background: conic-gradient(
+    from var(--orbit-trail-angle),
+    transparent 0deg,
+    transparent 310deg,
+    color-mix(in srgb, var(--orbit-color) 12%, transparent) 318deg,
+    color-mix(in srgb, var(--orbit-color) 58%, transparent) 340deg,
+    var(--orbit-color) 352deg,
+    var(--orbit-color) 360deg
+  );
+  content: '';
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  mask-composite: exclude;
+  opacity: 0;
+}
+
+.patrons-orbit-track[data-orbit-synced='true']::before {
+  opacity: 1;
+}
+
+.patrons-orbit-track-neutral {
+  --orbit-color: color-mix(in srgb, hsl(var(--foreground)) 62%, hsl(var(--background)));
+}
+
+.patrons-orbit-track-primary {
+  --orbit-color: hsl(var(--primary));
+}
+
+.patrons-orbit-track-tertiary {
+  --orbit-color: hsl(var(--tertiary));
+}
+
+.patrons-orbit-track-tertiary::before {
+  background: conic-gradient(
+    from var(--orbit-trail-angle),
+    var(--orbit-color) 0deg,
+    var(--orbit-color) 8deg,
+    color-mix(in srgb, var(--orbit-color) 58%, transparent) 20deg,
+    color-mix(in srgb, var(--orbit-color) 12%, transparent) 42deg,
+    transparent 50deg,
+    transparent 360deg
+  );
+}
+
+.patrons-orbit-planet {
+  left: 0;
+  top: 0;
+  offset-anchor: 50% 50%;
+  offset-distance: var(--orbit-rest-position);
+  offset-path: border-box;
+  offset-rotate: 0deg;
+}
+
+@keyframes patrons-planet-orbit {
+  from {
+    offset-distance: 0%;
+  }
+
+  to {
+    offset-distance: 100%;
+  }
+}
+
+.patrons-orbit-planet-motion {
+  animation: patrons-planet-orbit var(--orbit-duration) linear var(--orbit-delay) infinite;
+  animation-direction: var(--orbit-direction);
+  animation-play-state: var(--orbit-play-state);
+}
+
 @keyframes warp-ray-travel {
   from {
     transform: translate3d(0, 100cqmax, 0);
@@ -315,5 +460,13 @@
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+  }
+
+  .patrons-orbit-planet-motion {
+    animation: none !important;
+  }
+
+  .patrons-orbit-track::before {
+    display: none;
   }
 }

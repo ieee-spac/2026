@@ -8,10 +8,10 @@ export function Agenda() {
       <SectionRail>
         <SectionHeading>Agenda</SectionHeading>
 
-        <div className="relative mb-4 mt-6 w-full overflow-hidden rounded-xl border border-primary/20 bg-card/40 p-1.5 shadow-[0_24px_70px_-36px_rgba(0,98,155,0.75)]">
+        <div className="relative mb-4 mt-6 w-full overflow-hidden rounded-xl border border-primary/20 bg-card/40 p-1.5 shadow-[0_24px_70px_-36px_rgba(0,98,155,0.75)] dark:bg-[#020611]">
           <iframe
             title="IEEE SPAC event agenda"
-            className="h-[500px] w-full rounded-lg border-none sm:h-[600px] md:h-[700px]"
+            className="h-[500px] w-full rounded-lg border-none bg-white transition-[filter] duration-300 dark:invert dark:hue-rotate-180 sm:h-[600px] md:h-[700px]"
             src={LINKS.AGENDA}
             loading="lazy"
             sandbox="allow-scripts allow-same-origin allow-forms allow-popups"

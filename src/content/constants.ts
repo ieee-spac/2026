@@ -5,7 +5,7 @@ import {
   FaLinkedinIn,
 } from 'react-icons/fa6'
 
-export const EVENT_YEAR = 2025
+export const EVENT_YEAR = 2026
 
 export const METADATA = {
   title: `IEEE SPAC ${EVENT_YEAR}`,
