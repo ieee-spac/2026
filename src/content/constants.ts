@@ -25,7 +25,7 @@ export const LINKS = {
   INSTAGRAM: 'https://www.instagram.com/ieeespac/?hl=en',
   LINKEDIN: 'https://www.linkedin.com/company/ieeespac/',
   FACEBOOK: 'https://www.facebook.com/ieeespacottawa/',
-  GITHUB: 'https://github.com/ieee-spac/2025',
+  GITHUB: 'https://github.com/ieee-spac/2026',
   STORYBOOK: 'https://main--665264891b6bc70eded9109a.chromatic.com',
   FIGMA:
     'https://www.figma.com/community/file/1417704325784085062/ieee-spac-2024-twilight-design-system',
