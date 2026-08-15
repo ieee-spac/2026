@@ -34,7 +34,7 @@ export function TeamCard({ member }: { member: ITEAM_MEMBER }) {
 
   return (
     <article className="group flex h-full flex-col rounded-xl border border-primary/15 bg-card/65 p-5 shadow-[0_22px_60px_-42px_rgba(0,98,155,0.8)] backdrop-blur-sm transition-[border-color,box-shadow,transform] duration-300 hover:-translate-y-1 hover:border-primary/40 hover:shadow-[0_26px_68px_-38px_rgba(0,202,255,0.45)]">
-      <p className="min-h-11 text-center text-sm font-semibold uppercase tracking-[0.11em] text-primary">
+      <p className="min-h-11 text-center text-sm font-semibold tracking-[0.11em] text-primary">
         {member.role}
       </p>
 
