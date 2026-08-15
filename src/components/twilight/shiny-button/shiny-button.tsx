@@ -50,7 +50,7 @@ export function ShinyButton(
   const content = (
     <>
       <span
-        className="relative block h-full w-full text-lg uppercase tracking-[0.08em] text-neutral dark:text-tertiary"
+        className="relative block h-full w-full text-lg tracking-[0.03em] text-neutral dark:text-tertiary"
         style={{
           maskImage:
             'linear-gradient(-75deg,hsl(var(--primary)) calc(var(--x) + 20%),transparent calc(var(--x) + 30%),hsl(var(--primary)) calc(var(--x) + 100%))',

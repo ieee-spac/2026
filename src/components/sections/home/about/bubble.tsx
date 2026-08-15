@@ -38,7 +38,7 @@ export function Bubble({ className, number, label, color, size }: BubbleProps) {
               y="45%"
               textAnchor="middle"
               dominantBaseline="middle"
-              fontSize="90"
+              fontSize="72"
               fontWeight="bold"
               fill="black"
             >
@@ -49,7 +49,7 @@ export function Bubble({ className, number, label, color, size }: BubbleProps) {
               y="70%"
               textAnchor="middle"
               dominantBaseline="middle"
-              fontSize="24"
+              fontSize="19"
               fontWeight="bold"
               fill="black"
             >

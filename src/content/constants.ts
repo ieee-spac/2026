@@ -77,52 +77,44 @@ export const HERO = {
 export const ABOUT = {
   TITLE: 'About Us',
   PARAGRAPHS: [
-    'The IEEE Student Professional Awareness Conference (SPAC) is a formal networking event that serves esteemed professionals and allows them to engage with engineering and computer science students within their fields.',
-    'SPAC provides students, academics, and industry professionals an opportunity to network and bridge the gap between classrooms and boardrooms, thereby empowering attendees to build professional connections and form a bond.',
     'First hosted in 1979, SPAC has manifested itself as an event where future professionals receive exposure to the world of employment which complements their ongoing studies.',
+    'The IEEE Student Professional Awareness Conference (SPAC) is a formal networking event that serves esteemed professionals and allows them to engage with engineering and computer science students within their fields.',
   ],
   STAT_BUBBLES: [
     {
       number: 100,
       label: 'Companies',
-      className: 'bobbing-animation-1 aspect-square relative flex flex-start',
+      className: 'bobbing-animation-1 absolute left-0 top-[18%] z-0',
       color: ['#FFD100', '#DE9403'],
-      size: '90%',
+      size: 'clamp(10rem, 19vw, 15rem)',
     },
     {
       number: 300,
       label: 'Attendees',
       className:
-        'bobbing-animation-4 aspect-square self-end relative -bottom-4 -left-1 sm:bottom-0 sm:left-0',
+        'bobbing-animation-4 absolute bottom-[5%] left-[39%] z-10',
       color: ['#03A6DE', '#027AB3'],
-      size: '65%',
+      size: 'clamp(8rem, 15vw, 12rem)',
     },
     {
       number: 200,
       label: 'Students',
       className:
-        'bobbing-animation-2 aspect-square relative -left-10 sm:-left-10',
+        'bobbing-animation-2 absolute right-[10%] top-[6%] z-20',
       color: ['#77DD77', '#03A63C'],
-      size: '50%',
+      size: 'clamp(7rem, 12vw, 9.5rem)',
     },
     {
       number: 9,
       label: 'Years',
       className:
-        'bobbing-animation-3 aspect-square self-end relative -left-14 sm:-left-20 bottom-[20%]',
+        'bobbing-animation-3 absolute bottom-[12%] right-0 z-30',
       color: ['#FFA500', '#DE6003'],
-      size: '40%',
+      size: 'clamp(5.5rem, 9vw, 7rem)',
     },
   ],
   SUBTITLE: 'A typical SPAC...',
   SECTIONS: [
-    {
-      title: 'Presentation Section',
-      description:
-        'A dynamic opening with key speakers introducing the event\'s themes and goals.',
-      imgSrc: '/assets/twilight-design-system/presentation_section_image.svg',
-      imgAlt: 'Presentation',
-    },
     {
       title: 'Professional 1:1',
       description:

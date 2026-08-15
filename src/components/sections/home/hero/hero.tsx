@@ -27,9 +27,9 @@ export function Hero() {
           className="text-lg font-semibold md:text-2xl"
         >
           <div className="flex flex-col items-center space-y-2 text-center">
-            <p className="text-lg font-medium md:text-2xl">
+            <h1 className="text-balance text-lg font-medium md:text-2xl">
               {HERO.TITLE}
-            </p>
+            </h1>
             <p className="text-sm font-normal text-foreground/75 md:text-xl">
               {HERO.DATE}
               <sup>st</sup>
@@ -51,11 +51,14 @@ export function Hero() {
           </div>
         </div>
 
-        <div className="flex w-full flex-wrap justify-center gap-2 md:text-nowrap lg:flex-nowrap">
+        <div className="flex w-full flex-col items-center gap-3">
+          <p className="text-sm text-foreground/65">
+            Registration opens soon
+          </p>
           <ShinyButton
             href={LINKS.GALLERY}
             external
-            text={`View ${EVENT_YEAR} gallery `}
+            text={`View ${EVENT_YEAR - 1} Gallery `}
           />
         </div>
       </main>
