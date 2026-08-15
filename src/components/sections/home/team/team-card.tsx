@@ -51,8 +51,13 @@ export function TeamCard({ member }: { member: ITEAM_MEMBER }) {
                 />
               )
             : (
-                <div
-                  className="size-full rounded-full bg-primary/5"
+                <Image
+                  src="/assets/team-member-headshots/default.svg"
+                  alt=""
+                  width={1024}
+                  height={1024}
+                  unoptimized
+                  className="size-full rounded-full object-cover"
                   aria-hidden="true"
                 />
               )}

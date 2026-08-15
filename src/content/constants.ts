@@ -548,6 +548,15 @@ export const TEAM_MEMBERS: ITEAM_MEMBER[] = [
     linkedin: 'https://www.linkedin.com/in/hannah-faller-029a85392/',
   },
   {
+    name: 'Sofia Farhangian Ghahferokhi',
+    image: '',
+    institution: INSTITUTIONS.UNIVERSITY_OF_OTTAWA,
+    role: ROLE.LOGISTICS_TEAM,
+    yearStanding: '2nd',
+    programName: 'Computer Engineering',
+    linkedin: 'https://www.linkedin.com/in/sofia-farhangian-ghahferokhi-5463193b9/',
+  },
+  {
     name: 'Joed Gnansounou',
     image: '',
     institution: INSTITUTIONS.UNIVERSITY_OF_OTTAWA,
