@@ -503,6 +503,15 @@ export const TEAM_MEMBERS: ITEAM_MEMBER[] = [
     linkedin: 'https://www.linkedin.com/in/anna-hargraves-27a1922b9/',
   },
   {
+    name: 'Mateus DiGregorio',
+    image: '/assets/team-member-headshots/mateus-digregorio.jpg',
+    institution: INSTITUTIONS.CARLETON_UNIVERSITY,
+    role: ROLE.PATRONAGE_TEAM_MEMBER,
+    yearStanding: '3rd',
+    programName: 'Civil Engineering',
+    linkedin: 'https://www.linkedin.com/in/mateusdigregorio',
+  },
+  {
     name: 'Victoria Richard',
     image: '/assets/team-member-headshots/victoria-richard.jpg',
     institution: INSTITUTIONS.UNIVERSITY_OF_OTTAWA,
