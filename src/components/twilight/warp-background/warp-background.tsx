@@ -242,7 +242,6 @@ export const WarpBackground: React.FC<WarpBackgroundProps> = ({
                     'transform': `translateZ(calc(var(--grid-size) * -${ring.depth}))`,
                     'animationDelay': `${ring.travelDelay}s`,
                     'animationPlayState': motionActive ? 'running' : 'paused',
-                    '--depth-ring-play-state': motionActive ? 'running' : 'paused',
                     '--depth-ring-light-opacity': ring.lightOpacity,
                     '--depth-ring-dark-opacity': ring.darkOpacity,
                     '--depth-ring-radius': DEPTH_RING_RADIUS,
@@ -270,7 +269,9 @@ export const WarpBackground: React.FC<WarpBackgroundProps> = ({
                     borderRadius="var(--depth-ring-radius)"
                     colorFrom="hsl(var(--primary))"
                     colorTo="hsla(var(--auxiliary), 0.76)"
-                    className="opacity-[0.85] after:[animation-play-state:var(--depth-ring-play-state)] after:[filter:drop-shadow(0_2px_2px_hsla(var(--auxiliary),0.18))] dark:opacity-100 dark:after:[filter:drop-shadow(0_2px_3px_hsl(var(--primary)/0.28))]"
+                    enabled={motionEnabled}
+                    playState={motionActive ? 'running' : 'paused'}
+                    className="opacity-[0.85] dark:opacity-100"
                   />
                 </div>
               </div>
