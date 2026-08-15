@@ -40,13 +40,22 @@ export function TeamCard({ member }: { member: ITEAM_MEMBER }) {
 
       <div className="relative mx-auto mt-4 size-36">
         <div className="size-full overflow-hidden rounded-full border border-primary/30 bg-background p-1 shadow-[0_16px_40px_-26px_rgba(0,202,255,0.7)]">
-          <Image
-            src={member.image || '/placeholder.svg?height=144&width=144&query=professional headshot'}
-            alt={member.name}
-            width={144}
-            height={144}
-            className="size-full rounded-full object-cover transition-transform duration-500 group-hover:scale-[1.04]"
-          />
+          {member.image
+            ? (
+                <Image
+                  src={member.image}
+                  alt={member.name}
+                  width={144}
+                  height={144}
+                  className="size-full rounded-full object-cover transition-transform duration-500 group-hover:scale-[1.04]"
+                />
+              )
+            : (
+                <div
+                  className="size-full rounded-full bg-primary/5"
+                  aria-hidden="true"
+                />
+              )}
         </div>
 
         {member.institution && (

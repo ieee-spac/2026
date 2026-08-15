@@ -208,7 +208,7 @@ export function PatronsOrbit() {
       <Image
         src={spacLogo}
         alt=""
-        className="absolute left-1/2 top-1/2 h-auto w-28 -translate-x-1/2 -translate-y-1/2 drop-shadow-[0_8px_24px_hsl(var(--primary)/0.28)] sm:w-32"
+        className="absolute left-1/2 top-1/2 h-auto w-28 -translate-x-1/2 -translate-y-1/2 sm:w-32"
         sizes="(min-width: 640px) 8rem, 7rem"
       />
     </div>

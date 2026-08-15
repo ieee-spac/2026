@@ -65,7 +65,7 @@ export function Patrons() {
                 {' '}
                 will be announced here as the patron lineup is confirmed.
               </p>
-              <div className="mt-9">
+              <div className="patrons-coming-soon-cta mt-9">
                 <ShinyButton
                   href="#contact"
                   text="Partner with SPAC"
