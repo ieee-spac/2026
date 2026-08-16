@@ -474,7 +474,7 @@ export const TEAM_MEMBERS: ITEAM_MEMBER[] = [
   },
   {
     name: 'Rory McCulloch',
-    image: '/assets/team-member-headshots/rory-mcculloch.jpg',
+    image: '/assets/team-member-headshots/rory-mcculloch.png',
     institution: INSTITUTIONS.UNIVERSITY_OF_OTTAWA,
     role: ROLE.UOTTAWA_VICE_CHAIR,
     yearStanding: '3rd',
