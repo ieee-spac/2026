@@ -487,7 +487,7 @@ export const TEAM_MEMBERS: ITEAM_MEMBER[] = [
   },
   {
     name: 'Anna Hargraves',
-    image: '',
+    image: '/assets/team-member-headshots/anna-hargraves.jpg',
     institution: INSTITUTIONS.CARLETON_UNIVERSITY,
     role: ROLE.PATRONAGE_TEAM_MEMBER,
     yearStanding: '2nd',
