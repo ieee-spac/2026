@@ -256,22 +256,22 @@
   animation: bobbing 2s ease-in-out infinite;
 }
 
-@property --patrons-border-angle {
+@property --coming-soon-border-angle {
   syntax: '<angle>';
   inherits: false;
   initial-value: 0deg;
 }
 
-@keyframes patrons-border-travel {
+@keyframes coming-soon-border-travel {
   to {
-    --patrons-border-angle: 360deg;
+    --coming-soon-border-angle: 360deg;
   }
 }
 
-.patrons-border-light {
+.coming-soon-border-light {
   padding: 1.5px;
   background: conic-gradient(
-    from var(--patrons-border-angle),
+    from var(--coming-soon-border-angle),
     transparent 0deg,
     transparent 316deg,
     hsl(var(--primary) / 0.14) 322deg,
@@ -287,7 +287,7 @@
     linear-gradient(#000 0 0) content-box,
     linear-gradient(#000 0 0);
   mask-composite: exclude;
-  animation: patrons-border-travel 16s linear infinite;
+  animation: coming-soon-border-travel 16s linear infinite;
 }
 
 .patrons-planet {
@@ -381,8 +381,8 @@
   );
 }
 
-.patrons-coming-soon-cta > a,
-.patrons-coming-soon-cta > a:hover {
+.coming-soon-cta > a,
+.coming-soon-cta > a:hover {
   box-shadow: none;
 }
 

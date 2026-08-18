@@ -55,9 +55,9 @@ export const HEADER = {
   NAV_LINKS: [
     // { name: 'Home', path: '#home' },
     { name: 'About', path: '#about' },
-    { name: 'Patrons', path: '#patrons' },
+    // { name: 'Patrons', path: '#patrons' },
     /* { name: 'Previous Patrons', path: '#previouspatrons' }, */
-    { name: 'Agenda', path: '#agenda' },
+    // { name: 'Agenda', path: '#agenda' },
     { name: 'Team', path: '#team' },
     { name: 'Contact', path: '#contact' },
   ],
@@ -67,7 +67,7 @@ export const HEADER = {
 export const HERO = {
   IMAGE_ALT_TEXT: 'Main SPAC logo with year and stars',
   TITLE: 'IEEE Student Professional Awareness Conference',
-  DATE: 'October 31',
+  DATE: 'November 13',
   LOCATION: 'Brookstreet Hotel',
   TIME: '12 - 5 PM',
   LOCATION_LINK: LINKS.LOCATION,

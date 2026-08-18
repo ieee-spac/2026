@@ -1,10 +1,10 @@
-import { ShinyButton } from '@/components/twilight/shiny-button/shiny-button'
-import { Spotlight } from '@/components/twilight/spotlight/spotlight'
+import { ComingSoon } from '@/components/sections/home/coming-soon'
 import { SectionHeading, SectionRail } from '@/components/sections/home/section-heading'
-import { PatronsOrbit } from '@/components/sections/home/patrons/patrons-orbit'
 
 // Restore these imports with the patron-tier block below once the lineup is confirmed.
 // import { LogoSection } from '@/components/sections/home/patrons/patrons-tier'
+// import { ShinyButton } from '@/components/twilight/shiny-button/shiny-button'
+// import { Spotlight } from '@/components/twilight/spotlight/spotlight'
 // import { LINKS, PATRONS_DATA, TIER_NAME, TIER_PROPERTIES } from '@/content/constants'
 import { EVENT_YEAR, PATRONS } from '@/content/constants'
 
@@ -42,40 +42,18 @@ export function Patrons() {
           </div>
         */}
 
-        <div className="relative isolate overflow-hidden rounded-xl border border-primary/20 bg-[radial-gradient(circle_at_18%_15%,hsl(var(--primary)/0.12),transparent_34%),linear-gradient(135deg,hsl(var(--card)/0.82),hsl(var(--background))_72%)] px-6 py-12 sm:px-10 sm:py-16 lg:min-h-[28rem] lg:px-14">
-          <Spotlight
-            className="-left-28 -top-20 opacity-40 md:left-0 md:top-0"
-            fill="hsl(var(--primary))"
-          />
-
-          <span
-            aria-hidden="true"
-            className="patrons-border-light pointer-events-none absolute inset-0 rounded-[inherit]"
-          />
-
-          <div className="relative z-10 grid items-center gap-12 lg:grid-cols-[minmax(0,1.1fr)_minmax(19rem,0.9fr)] lg:gap-16">
-            <div className="max-w-2xl">
-              <h3 className="text-balance text-5xl font-bold tracking-[-0.035em] text-primary sm:text-6xl lg:text-7xl">
-                Coming soon.
-              </h3>
-              <p className="mt-6 max-w-[62ch] text-pretty text-base leading-7 text-foreground/75 sm:text-lg sm:leading-8">
-                The organizations supporting SPAC
-                {' '}
-                {EVENT_YEAR}
-                {' '}
-                will be announced here as the patron lineup is confirmed.
-              </p>
-              <div className="patrons-coming-soon-cta mt-9">
-                <ShinyButton
-                  href="#contact"
-                  text="Partner with SPAC"
-                />
-              </div>
-            </div>
-
-            <PatronsOrbit />
-          </div>
-        </div>
+        <ComingSoon
+          action={{ href: '#contact', text: 'Partner with SPAC' }}
+          description={(
+            <>
+              The organizations supporting SPAC
+              {' '}
+              {EVENT_YEAR}
+              {' '}
+              will be announced here as the patron lineup is confirmed.
+            </>
+          )}
+        />
       </SectionRail>
     </section>
   )
