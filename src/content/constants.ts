@@ -567,6 +567,14 @@ export const TEAM_MEMBERS: ITEAM_MEMBER[] = [
     linkedin: 'https://www.linkedin.com/in/vans0090/',
   },
   {
+    name: 'Anique Ali',
+    image: '/assets/team-member-headshots/anique-ali.png',
+    institution: INSTITUTIONS.CARLETON_UNIVERSITY,
+    role: ROLE.LOGISTICS_TEAM,
+    programName: 'Software Engineering',
+    linkedin: 'https://www.linkedin.com/in/anique-a-456b66175/',
+  },
+  {
     name: 'Emmanuel Eyito',
     image: '/assets/team-member-headshots/emmanuel-eyito.jpg',
     institution: INSTITUTIONS.ALGONQUIN_COLLEGE,
