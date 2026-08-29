@@ -550,12 +550,12 @@ export const TEAM_MEMBERS: ITEAM_MEMBER[] = [
   },
   {
     name: 'Joed Gnansounou',
-    image: '',
+    image: '/assets/team-member-headshots/joed-gnansounou.jpeg',
     institution: INSTITUTIONS.UNIVERSITY_OF_OTTAWA,
     role: ROLE.LOGISTICS_TEAM,
-    // yearStanding: '4th',
+    yearStanding: '3rd',
     programName: 'Computer Engineering',
-    // linkedin: 'https://www.linkedin.com/in/joedgnansounou/',
+    linkedin: 'https://www.linkedin.com/in/joedgnansounou/',
   },
   {
     name: 'Vanshika Vanshika',
