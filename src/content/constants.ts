@@ -68,6 +68,7 @@ export const HERO = {
   IMAGE_ALT_TEXT: 'Main SPAC logo with year and stars',
   TITLE: 'IEEE Student Professional Awareness Conference',
   DATE: 'November 13',
+  DATE_ENDING: 'th',
   LOCATION: 'Brookstreet Hotel',
   TIME: '12 - 5 PM',
   LOCATION_LINK: LINKS.LOCATION,

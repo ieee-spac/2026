@@ -32,7 +32,7 @@ export function Hero() {
             </h1>
             <p className="text-sm font-normal text-foreground/75 md:text-xl">
               {HERO.DATE}
-              <sup>st</sup>
+              <sup>{HERO.DATE_ENDING}</sup>
               {' '}
               {' '}
               <a
