@@ -505,6 +505,15 @@ export const TEAM_MEMBERS: ITEAM_MEMBER[] = [
     linkedin: 'https://www.linkedin.com/in/mateusdigregorio',
   },
   {
+    name: 'David Afolabi-Daniels',
+    image: '/assets/team-member-headshots/david-afolabi-daniels.jpg',
+    institution: INSTITUTIONS.UNIVERSITY_OF_OTTAWA,
+    role: ROLE.PATRONAGE_TEAM_MEMBER,
+    yearStanding: '2nd',
+    programName: 'Electrical Engineering',
+    linkedin: 'https://www.linkedin.com/in/david-afolabi-daniels/',
+  },
+  {
     name: 'Victoria Richard',
     image: '/assets/team-member-headshots/victoria-richard.jpg',
     institution: INSTITUTIONS.UNIVERSITY_OF_OTTAWA,
