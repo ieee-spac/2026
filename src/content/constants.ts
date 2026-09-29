@@ -598,8 +598,8 @@ export const TEAM_MEMBERS: ITEAM_MEMBER[] = [
     instagram: '',
   },
   {
-    name: 'Meltem Selin',
-    image: '/assets/team-member-headshots/meltem-selin.jpg',
+    name: 'Meltem Çetin',
+    image: '/assets/team-member-headshots/meltem-cetin.jpg',
     institution: INSTITUTIONS.UNIVERSITY_OF_OTTAWA,
     role: ROLE.MARKETING_LEAD,
     yearStanding: '3rd',
