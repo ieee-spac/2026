@@ -581,6 +581,7 @@ export const TEAM_MEMBERS: ITEAM_MEMBER[] = [
     image: '/assets/team-member-headshots/anique-ali.png',
     institution: INSTITUTIONS.CARLETON_UNIVERSITY,
     role: ROLE.LOGISTICS_TEAM,
+    yearStanding: '5th',
     programName: 'Software Engineering',
     linkedin: 'https://www.linkedin.com/in/anique-a-456b66175/',
   },
