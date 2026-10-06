@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { cn } from '@/components/utils/cn'
+import { FundingAcknowledgment } from '@/components/sections/home/funding-acknowledgment'
 
 import { FOOTER } from '@/content/constants'
 
@@ -31,6 +32,7 @@ export function Footer({
   return (
     <footer className="border-t border-primary/20 text-neutral-content transition-[border-color,box-shadow] duration-300 hover:border-primary/35 hover:shadow-[0_-18px_42px_-34px_rgba(0,202,255,0.65)]">
       <div className="mx-auto w-full max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
+        <FundingAcknowledgment />
 
         {/* LOGO and SOCIAL MEDIA ICONS in one row */}
         <div className="flex flex-wrap justify-between items-start">
