@@ -52,9 +52,11 @@ export function Hero() {
         </div>
 
         <div className="flex w-full flex-col items-center gap-3">
-          <p className="text-sm text-foreground/65">
-            Registration opens soon
-          </p>
+          <ShinyButton
+            href={LINKS.SPAC_TICKETS}
+            external
+            text="Register for SPAC"
+          />
           <ShinyButton
             href={LINKS.GALLERY}
             external

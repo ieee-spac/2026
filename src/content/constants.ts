@@ -17,7 +17,7 @@ export const LINKS = {
   GALLERY: 'https://www.hgmedias.ca/ieee-spac-2025',
   PATRONAGE_PACKAGE:
     'https://www.canva.com/design/DAGm9tsOucg/neaqO-lvIVJiQMIKE8r-HQ/view?utm_content=DAGm9tsOucg&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h7a71b5f6d5#1',
-  SPAC_TICKETS: 'https://www.eventbrite.com/e/student-professional-awareness-conference-2025-tickets-1661438470189?utm_experiment=test_share_listing&sg=46bac6f1b1abfbd58224fb8e29a196e19e7dd4a112e84e17e4a90a27dd5125890e38d4c589f3ec78c4d3a2fb06fc258d4e9213a81710f6600a1e5ce02061d0b6cd2095bc6b53e5cdd80f7a78a0f2',
+  SPAC_TICKETS: 'https://events.vtools.ieee.org/m/584396',
   SPAC_PLUS_AGM_TICKETS: 'https://events.vtools.ieee.org/m/435598',
   AGENDA:
     'https://moving-alone-78842782.figma.site/',
