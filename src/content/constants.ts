@@ -55,9 +55,10 @@ export const HEADER = {
   NAV_LINKS: [
     // { name: 'Home', path: '#home' },
     { name: 'About', path: '#about' },
-    // { name: 'Patrons', path: '#patrons' },
+    { name: 'Patrons', path: '#patrons' },
+    { name: 'Program', path: '#program' },
+    { name: 'Speakers', path: '#speakers' },
     /* { name: 'Previous Patrons', path: '#previouspatrons' }, */
-    // { name: 'Agenda', path: '#agenda' },
     { name: 'Team', path: '#team' },
     { name: 'Contact', path: '#contact' },
   ],
@@ -158,122 +159,240 @@ export const ABOUT = {
   ],
 }
 
+// -----------------  PATRONS ------------------
 export enum TIER_NAME {
-  PLATINUM = 'Platinum/Title',
+  PLATINUM = 'Platinum',
   GOLD = 'Gold',
   SILVER = 'Silver',
   BRONZE = 'Bronze',
-  HOSTED = 'Hosted By',
 }
 
 export interface ITIER_LOGO {
-  light: string
-  dark: string
-  alt: string
+  name: string
+  src: string
+  /** Only set when the organization publishes its own version for dark backgrounds. */
+  darkSrc?: string
+  width: number
+  height: number
   url: string
+  /** Optical size tweak for marks that read small or large at a shared height. */
+  scale?: number
 }
 
-export const TIER_PROPERTIES = {
+export const TIER_PROPERTIES: Record<TIER_NAME, { titleColor: string, gradientClass: string, logoHeight: number }> = {
   [TIER_NAME.PLATINUM]: {
     titleColor: 'text-warning',
     gradientClass: 'from-warning to-background',
+    logoHeight: 8,
   },
   [TIER_NAME.GOLD]: {
     titleColor: 'text-tertiary',
     gradientClass: 'from-tertiary to-background',
+    logoHeight: 5,
   },
   [TIER_NAME.SILVER]: {
     titleColor: 'text-slate-400',
     gradientClass: 'from-slate-400 to-background',
+    logoHeight: 3.5,
   },
   [TIER_NAME.BRONZE]: {
     titleColor: 'text-amber-800',
     gradientClass: 'from-amber-800 to-background',
-  },
-  [TIER_NAME.HOSTED]: {
-    titleColor: 'text-cyan-400',
-    gradientClass: 'from-cyan-400 to-background',
+    logoHeight: 2.75,
   },
 }
 
 export const PATRONS_DATA: Record<TIER_NAME, ITIER_LOGO[]> = {
   [TIER_NAME.PLATINUM]: [
     {
-      light: '/assets/patron-logos/QNX-Logo-BLACK-RGB (2).svg',
-      dark: '/assets/patron-logos/QNX-Logo-QNX-CORAL-RGB.svg',
-      alt: 'QNX logo',
-      url: 'https://blackberry.qnx.com',
+      name: 'Marvell',
+      src: '/assets/patron-logos/marvell_logo_light.svg',
+      darkSrc: '/assets/patron-logos/marvell_logo_dark.svg',
+      width: 1004,
+      height: 288,
+      url: 'https://www.marvell.com',
     },
   ],
   [TIER_NAME.GOLD]: [
-
     {
-      light: '/assets/patron-logos/redbull_logo.png',
-      dark: '/assets/patron-logos/redbull_logo.png',
-      alt: 'Redbull logo',
-      url: 'https://www.redbull.com/ca-en',
+      name: 'CGI',
+      src: '/assets/patron-logos/cgi_logo.png',
+      width: 809,
+      height: 377,
+      url: 'https://www.cgi.com/canada/en-ca',
     },
     {
-      light: '/assets/patron-logos/lumentum_logo_light.png',
-      dark: '/assets/patron-logos/lumentum_logo_dark.png',
-      alt: 'Lumentum logo',
+      name: 'Lumentum',
+      src: '/assets/patron-logos/lumentum_logo_light.png',
+      darkSrc: '/assets/patron-logos/lumentum_logo_dark.png',
+      width: 1183,
+      height: 242,
       url: 'https://www.lumentum.com/en',
     },
   ],
   [TIER_NAME.SILVER]: [
     {
-      light: '/assets/patron-logos/ieee_life_members_logo.png',
-      dark: '/assets/patron-logos/ieee_life_members_logo.png',
-      alt: 'IEEE Life Members Affinity Groups Logo',
-      url: 'https://life.ieee.org',
+      name: 'Mission Control Space Services',
+      src: '/assets/patron-logos/mission_control_logo.png',
+      width: 1600,
+      height: 367,
+      url: 'https://missioncontrolspace.com',
     },
     {
-      light: '/assets/patron-logos/CGI_logo.png',
-      dark: '/assets/patron-logos/CGI_logo.png',
-      alt: 'CGI Logo',
-      url: 'https://www.cgi.com/canada/en-ca',
+      name: 'Hydro Ottawa',
+      src: '/assets/patron-logos/hydro_ottawa_logo.svg',
+      width: 152,
+      height: 67,
+      url: 'https://hydroottawa.com/en',
     },
     {
-      light: '/assets/patron-logos/nordion_logo_light.svg',
-      dark: '/assets/patron-logos/nordion_logo_dark.svg',
-      alt: 'Nordion Logo',
-      url: 'https://www.nordion.com',
+      name: 'STL Engineering',
+      src: '/assets/patron-logos/stl_engineering_logo.svg',
+      width: 602,
+      height: 516,
+      url: 'https://www.stl-engineering.ca',
+      scale: 1.2,
     },
   ],
   [TIER_NAME.BRONZE]: [
     {
-      light: '/assets/patron-logos/NAVCANADA_logo.png',
-      dark: '/assets/patron-logos/NAVCANADA_logo.png',
-      alt: 'Nav Canada Logo',
+      name: 'NAV CANADA',
+      src: '/assets/patron-logos/NAVCANADA_logo.png',
+      width: 1200,
+      height: 866,
       url: 'https://www.navcanada.ca/en/',
-    },
-  ],
-  [TIER_NAME.HOSTED]: [
-    {
-      light: '/assets/patron-logos/ieee_uottawa_logo_light.svg',
-      dark: '/assets/patron-logos/ieee_uottawa_logo_dark.svg',
-      alt: 'uOttawa IEEE Logo',
-      url: 'https://ieeeuottawa.ca',
+      scale: 1.1,
     },
     {
-      light: '/assets/patron-logos/carleton_university_logo_light.svg',
-      dark: '/assets/patron-logos/carleton_university_logo_dark.svg',
-      alt: 'Carleton University Logo',
-      url: 'https://carleton.ca',
+      name: 'Professional Engineers Ontario',
+      src: '/assets/patron-logos/peo_logo_light.png',
+      darkSrc: '/assets/patron-logos/peo_logo_dark.png',
+      width: 384,
+      height: 88,
+      url: 'https://www.peo.on.ca',
     },
     {
-      light: '/assets/patron-logos/algonquin_college_logo_green.png',
-      dark: '/assets/patron-logos/algonquin_college_logo_green.png',
-      alt: 'Algonquin College Logo',
-      url: 'https://www.algonquincollege.com',
+      name: 'IEEE Life Members',
+      src: '/assets/patron-logos/ieee_life_members_logo.png',
+      width: 225,
+      height: 77,
+      url: 'https://life.ieee.org',
     },
-
   ],
 }
 
 export const PATRONS = {
   TITLE: 'Our Patrons',
   ID: 'patrons',
+}
+
+// -----------------  PROGRAM ------------------
+export const PROGRAM = {
+  ID: 'program',
+  TITLE: 'Program',
+  INTRO: `Friday, November 13. Every room is inside the ${HERO.LOCATION}.`,
+  OVERVIEW: [
+    { time: '11:30 AM', endTime: '12:30 PM', title: 'Registration', room: 'GS Foyer' },
+    { time: '12:00 PM', endTime: '1:00 PM', title: 'Opening Remarks & Networking', room: 'Newbridge II & III' },
+    { time: '1:00 PM', endTime: '5:00 PM', title: 'Workshops & speakers', room: 'Newbridge I & Signed (GS)', href: '#workshops' },
+    { time: '1:00 PM', endTime: '5:00 PM', title: 'Networking', room: 'Sealed & Delivered (GS)' },
+    { time: '5:00 PM', endTime: '6:30 PM', title: 'Reception', room: 'Newbridge Foyer' },
+    { time: '8:00 PM', endTime: '10:00 PM', title: 'Ottawa Section AGM & Dinner', room: 'Newbridge II & III' },
+  ],
+  WORKSHOPS_TITLE: 'Workshops & speakers',
+  WORKSHOPS_DESCRIPTION: 'Two rooms run at the same time. Sessions last 30 to 90 minutes, so you can move between them.',
+  /** Half-hour slots starting at 1:00 PM. */
+  SLOT_LABELS: ['1:00', '1:30', '2:00', '2:30', '3:00', '3:30', '4:00', '4:30'],
+  ROOMS: ['Newbridge I', 'Signed (GS)'],
+}
+
+export type SESSION_KIND = 'workshop' | 'talk' | 'panel'
+
+export interface ISESSION {
+  title: string
+  kind: SESSION_KIND
+  room: number
+  /** Index into PROGRAM.SLOT_LABELS. */
+  start: number
+  /** Number of half-hour slots. */
+  span: number
+  detail?: string
+  href?: string
+}
+
+export const SESSIONS: ISESSION[] = [
+  { title: 'CGI', kind: 'workshop', room: 0, start: 0, span: 1 },
+  { title: 'Mission Control', kind: 'workshop', room: 0, start: 1, span: 1 },
+  { title: 'IEEE YP Panel', detail: 'From Campus to Career', kind: 'panel', room: 0, start: 2, span: 3, href: '#speakers' },
+  { title: 'Marvell', kind: 'workshop', room: 0, start: 5, span: 2 },
+  { title: 'Prof. Yiwei Lu', detail: 'AI Safety', kind: 'talk', room: 1, start: 0, span: 1 },
+  { title: 'Dr. Bushra Khan', detail: 'Leadership', kind: 'talk', room: 1, start: 1, span: 1 },
+  { title: 'STL Engineering', kind: 'workshop', room: 1, start: 2, span: 1 },
+  { title: 'Lumentum', kind: 'workshop', room: 1, start: 4, span: 2 },
+  { title: 'Women in Tech Panel', kind: 'panel', room: 1, start: 7, span: 1 },
+]
+
+// -----------------  SPEAKERS ------------------
+export interface ISPEAKER {
+  name: string
+  title: string
+  org: string
+  image: string
+  bio: string
+}
+
+export const SPEAKERS = {
+  ID: 'speakers',
+  TITLE: 'Speakers',
+  INTRO: 'Industry professionals and researchers sharing how they made the move from school to work.',
+  PANEL: {
+    LABEL: 'IEEE Young Professionals panel',
+    TITLE: 'From Campus to Career: Practical Advice for Your Job Search and First Industry Role',
+    WHEN: '2:00 – 3:30 PM',
+    ROOM: 'Newbridge I',
+    DESCRIPTION: 'A career beyond academia can open many paths, but the transition often raises questions about how to translate research skills into industry roles, navigate hiring expectations, and build a fulfilling career. This career-coaching panel brings together professionals with academic and industry experience to share practical advice, personal lessons, and perspectives on making that transition with confidence.',
+    MODERATOR: {
+      name: 'Afsoon Alidadi Shamsabadi',
+      title: 'Manager, Non-Terrestrial Networks Lab, Carleton University',
+      org: 'Carleton University',
+      image: '/assets/speaker-headshots/afsoon-alidadi-shamsabadi.jpg',
+      bio: 'Afsoon Alidadi Shamsabadi (She/Her) is the Manager of the Non-Terrestrial Networks Lab at Carleton University, Canada. She is also the Past Chair of IEEE Women in Engineering Ottawa, Vice-Chair of IEEE Young Professionals Ottawa, and a Committee Member of IEEE Canada Young Professionals. She holds a PhD from Carleton University and has also studied at Isfahan University of Technology and Sharif University of Technology. She has six years of industry experience at Huawei Technologies, where she served as a Solution Sales Manager specializing in end-to-end wireless network solutions. Her research at Carleton University focuses on non-terrestrial networks (NTN), particularly the integration of High Altitude Platform Stations (HAPS) with terrestrial wireless networks to enable next-generation connectivity. Afsoon is an IEEE Senior Member and is actively involved in the engineering community.',
+    } satisfies ISPEAKER,
+    PANELISTS: [
+      {
+        name: 'Dr. Nima Javanbakht',
+        title: 'Senior RF Engineer, Sanmina | Adjunct Professor, Carleton University',
+        org: 'Sanmina',
+        image: '/assets/speaker-headshots/nima-javanbakht.jpg',
+        bio: 'Dr. Nima Javanbakht (SM26, M10) is a senior RF engineer with Sanmina Corporation and an adjunct professor at Carleton University since 2021. He is a passionate volunteer and has been volunteering with IEEE for several years in different capacities. Nima is currently leading IEEE Region 7 Young Professionals, and is a committee member in YP MTTS, YP ComSoc, and IEEE Entrepreneurship. Nima received the Ph.D. degree in electrical engineering from Carleton University, Ottawa, ON, Canada, in 2021, which was one of his achievements in his twenties. He has authored and co-authored more than 70 technical papers. His research interests include antennas, wireless communications, miniaturized RF components, integrated RF modules, frequency synthesizers, optical pluggable modules, and microwave sensors.',
+      },
+      {
+        name: 'Dr. Taimoor Abbas',
+        title: 'Senior Member of Technical Staff, InterDigital',
+        org: 'InterDigital',
+        image: '/assets/speaker-headshots/taimoor-abbas.jpg',
+        bio: 'Dr. Taimoor Abbas (Senior Member, IEEE) is a Senior Member of Technical Staff at InterDigital, Canada, with over 12 years of experience in the wireless communications industry. He received his Ph.D. (2014) and M.Sc. (2009) degrees in Electrical Engineering from Lund University, Sweden, and an M.Sc. in Electronics (2006) from Quaid-i-Azam University, Pakistan. Previously, he was the co-founder and CEO of ICV-TECH AB and held research and engineering positions at Volvo Cars and Huawei Technologies in Sweden. He actively contributes to 3GPP standardization and holds an extensive IP portfolio, with over 60 granted patents and more than 275 filed patent families. He has also authored four book chapters and more than 30 journal and conference publications. Dr. Abbas is the founder and Chair of the IEEE Vehicular Technology Society (VTS) Young Professionals Committee, promoting mentoring, professional development, and volunteer engagement. His research interests include 5G/6G wireless communications, Vehicle-to-Everything (V2X) technologies, mobile network architectures, MIMO systems, artificial intelligence, and machine learning.',
+      },
+      {
+        name: 'Victoria',
+        title: 'Technical Customer Support Manager, Solace',
+        org: 'Solace',
+        image: '/assets/speaker-headshots/victoria.jpg',
+        bio: 'Victoria is a Technical Customer Support Manager at Solace, leading a team of engineers dedicated to solving high-stakes, real-world issues where enterprise solutions meet the field. With a background in Computer Engineering and a Master’s in Computer Science, Victoria is an IEEE-published researcher who brings both deep technical rigour and battle-tested troubleshooting experience to the engineering workforce.',
+      },
+      {
+        name: 'Dr. Yaser Eftekhari',
+        title: 'Senior AI Engineer, Nokia',
+        org: 'Nokia',
+        image: '/assets/speaker-headshots/yaser-eftekhari.jpg',
+        bio: 'Dr. Yaser Eftekhari understands the journey from academia to industry firsthand. After completing his PhD in Systems and Computer Engineering at Carleton University, focusing on Compressed Sensing and Information Theory, he explored software security as a postdoctoral fellow at Irdeto Canada. This experience sparked a decade-long career at Irdeto, where he tackled real-world challenges in secure payments, cutting-edge security research, and digital car keys. He’s worn many hats, from Cryptography Engineer to Principal Engineer, Lead Architect, Senior R&D Researcher, and Product Manager. Today, he’s a Senior AI Engineer at Nokia, proving that a strong academic foundation can lead to a dynamic and fulfilling industry career.',
+      },
+    ] satisfies ISPEAKER[],
+  },
+  TALKS: [
+    { name: 'Prof. Yiwei Lu', topic: 'AI Safety', when: '1:00 – 1:30 PM', room: 'Signed (GS)' },
+    { name: 'Dr. Bushra Khan', topic: 'Leadership', when: '1:30 – 2:00 PM', room: 'Signed (GS)' },
+  ],
 }
 
 export const CONTACT_FORM = {

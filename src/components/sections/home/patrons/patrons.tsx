@@ -1,59 +1,81 @@
-import { ComingSoon } from '@/components/sections/home/coming-soon'
-import { SectionHeading, SectionRail } from '@/components/sections/home/section-heading'
+import Image from 'next/image'
 
-// Restore these imports with the patron-tier block below once the lineup is confirmed.
-// import { LogoSection } from '@/components/sections/home/patrons/patrons-tier'
-// import { ShinyButton } from '@/components/twilight/shiny-button/shiny-button'
-// import { Spotlight } from '@/components/twilight/spotlight/spotlight'
-// import { LINKS, PATRONS_DATA, TIER_NAME, TIER_PROPERTIES } from '@/content/constants'
-import { EVENT_YEAR, PATRONS } from '@/content/constants'
+import { SectionHeading, SectionRail } from '@/components/sections/home/section-heading'
+import { cn } from '@/components/utils/cn'
+import type { ITIER_LOGO } from '@/content/constants'
+import { PATRONS, PATRONS_DATA, TIER_NAME, TIER_PROPERTIES } from '@/content/constants'
+
+function PatronLogo({ logo, height }: { logo: ITIER_LOGO, height: number }) {
+  const imageProps = {
+    alt: logo.name,
+    width: logo.width,
+    height: logo.height,
+    sizes: '20rem',
+  }
+
+  return (
+    <a
+      href={logo.url}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="flex justify-center rounded-sm p-2 transition-transform duration-700 hover:scale-110 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+    >
+      <span className="block max-w-full" style={{ height: `${height * (logo.scale ?? 1)}rem` }}>
+        {/* A dark variant only exists when the organization publishes one; otherwise the same file serves both themes. */}
+        <Image
+          {...imageProps}
+          src={logo.src}
+          unoptimized={logo.src.endsWith('.svg')}
+          className={cn('h-full w-auto max-w-full object-contain', logo.darkSrc && 'dark:hidden')}
+        />
+        {logo.darkSrc && (
+          <Image
+            {...imageProps}
+            src={logo.darkSrc}
+            unoptimized={logo.darkSrc.endsWith('.svg')}
+            className="hidden h-full w-auto max-w-full object-contain dark:block"
+          />
+        )}
+      </span>
+    </a>
+  )
+}
+
+// Same gentle float the 2025 patron logos had.
+const BOBBING = ['bobbing-animation-1', 'bobbing-animation-2', 'bobbing-animation-3']
+
+function LogoSection({ tier }: { tier: TIER_NAME }) {
+  const { titleColor, gradientClass, logoHeight } = TIER_PROPERTIES[tier]
+  const logos = PATRONS_DATA[tier]
+
+  return (
+    <section>
+      <h3 className={cn('mb-4 text-3xl font-semibold sm:text-4xl md:text-5xl', titleColor)}>
+        {tier}
+      </h3>
+      <span aria-hidden="true" className={cn('mb-6 block bg-gradient-to-r p-[0.5px]', gradientClass)} />
+      <ul className="flex flex-wrap items-center justify-around gap-x-8 gap-y-6">
+        {logos.map((logo, index) => (
+          <li key={logo.name} className={BOBBING[index % BOBBING.length]}>
+            <PatronLogo logo={logo} height={logoHeight} />
+          </li>
+        ))}
+      </ul>
+    </section>
+  )
+}
 
 export function Patrons() {
   return (
-    <section id={PATRONS.ID} className="relative mt-28 scroll-mt-28 overflow-x-clip">
+    <section id={PATRONS.ID} className="mt-28 scroll-mt-28">
       <SectionRail>
         <SectionHeading>{PATRONS.TITLE}</SectionHeading>
 
-        {/*
-          Patron tiers are temporarily hidden while the upcoming lineup is unconfirmed.
-          Restore the imports above and this block, then comment out the coming-soon block.
-
-          <div className="relative">
-            <Spotlight
-              className="-left-20 top-0 md:left-10 md:top-0"
-              fill="LightGoldenRodYellow"
-            />
-            {Object.values(TIER_NAME).map(tier => (
-              <LogoSection
-                key={tier}
-                title={tier}
-                titleColor={TIER_PROPERTIES[tier].titleColor}
-                logos={PATRONS_DATA[tier]}
-                gradientClass={TIER_PROPERTIES[tier].gradientClass}
-              />
-            ))}
-            <div className="flex w-full justify-center pt-2">
-              <ShinyButton
-                href={LINKS.PATRONAGE_PACKAGE}
-                external
-                text="Become a Patron"
-              />
-            </div>
-          </div>
-        */}
-
-        <ComingSoon
-          action={{ href: '#contact', text: 'Partner with SPAC' }}
-          description={(
-            <>
-              The organizations supporting SPAC
-              {' '}
-              {EVENT_YEAR}
-              {' '}
-              will be announced here as the patron lineup is confirmed.
-            </>
-          )}
-        />
+        <div className="mx-auto max-w-3xl space-y-10">
+          {Object.values(TIER_NAME).map(tier => (
+            <LogoSection key={tier} tier={tier} />
+          ))}
+        </div>
       </SectionRail>
     </section>
   )
