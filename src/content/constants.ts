@@ -272,11 +272,12 @@ export const PATRONS_DATA: Record<TIER_NAME, ITIER_LOGO[]> = {
       url: 'https://www.peo.on.ca',
     },
     {
-      name: 'IEEE Life Members',
-      src: '/assets/patron-logos/ieee_life_members_logo.png',
-      width: 225,
-      height: 77,
-      url: 'https://life.ieee.org',
+      name: 'IEEE Young Professionals',
+      src: '/assets/ieee/young-professionals-30-color.png',
+      darkSrc: '/assets/ieee/young-professionals-30-white.png',
+      width: 6216,
+      height: 2064,
+      url: 'https://yp.ieee.org/',
     },
   ],
 }
@@ -294,12 +295,12 @@ export const PROGRAM = {
   OVERVIEW: [
     { time: '11:30 AM', endTime: '12:30 PM', title: 'Registration', room: 'GS Foyer' },
     { time: '12:00 PM', endTime: '1:00 PM', title: 'Opening Remarks & Networking', room: 'Newbridge II & III' },
-    { time: '1:00 PM', endTime: '5:00 PM', title: 'Workshops & speakers', room: 'Newbridge I & Signed (GS)', href: '#workshops' },
+    { time: '1:00 PM', endTime: '5:00 PM', title: 'Workshops & Speakers', room: 'Newbridge I & Signed (GS)', href: '#workshops' },
     { time: '1:00 PM', endTime: '5:00 PM', title: 'Networking', room: 'Sealed & Delivered (GS)' },
     { time: '5:00 PM', endTime: '6:30 PM', title: 'Reception', room: 'Newbridge Foyer' },
     { time: '8:00 PM', endTime: '10:00 PM', title: 'Ottawa Section AGM & Dinner', room: 'Newbridge II & III' },
   ],
-  WORKSHOPS_TITLE: 'Workshops & speakers',
+  WORKSHOPS_TITLE: 'Workshops & Speakers',
   WORKSHOPS_DESCRIPTION: 'Two rooms run at the same time. Sessions last 30 to 90 minutes, so you can move between them.',
   /** Half-hour slots starting at 1:00 PM. */
   SLOT_LABELS: ['1:00', '1:30', '2:00', '2:30', '3:00', '3:30', '4:00', '4:30'],
@@ -346,7 +347,7 @@ export const SPEAKERS = {
   TITLE: 'Speakers',
   INTRO: 'Industry professionals and researchers sharing how they made the move from school to work.',
   PANEL: {
-    LABEL: 'IEEE Young Professionals panel',
+    LABEL: 'IEEE Young Professionals Panel',
     TITLE: 'From Campus to Career: Practical Advice for Your Job Search and First Industry Role',
     WHEN: '2:00 – 3:30 PM',
     ROOM: 'Newbridge I',
