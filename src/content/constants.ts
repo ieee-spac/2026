@@ -375,7 +375,7 @@ export const SPEAKERS = {
         bio: 'Dr. Taimoor Abbas (Senior Member, IEEE) is a Senior Member of Technical Staff at InterDigital, Canada, with over 12 years of experience in the wireless communications industry. He received his Ph.D. (2014) and M.Sc. (2009) degrees in Electrical Engineering from Lund University, Sweden, and an M.Sc. in Electronics (2006) from Quaid-i-Azam University, Pakistan. Previously, he was the co-founder and CEO of ICV-TECH AB and held research and engineering positions at Volvo Cars and Huawei Technologies in Sweden. He actively contributes to 3GPP standardization and holds an extensive IP portfolio, with over 60 granted patents and more than 275 filed patent families. He has also authored four book chapters and more than 30 journal and conference publications. Dr. Abbas is the founder and Chair of the IEEE Vehicular Technology Society (VTS) Young Professionals Committee, promoting mentoring, professional development, and volunteer engagement. His research interests include 5G/6G wireless communications, Vehicle-to-Everything (V2X) technologies, mobile network architectures, MIMO systems, artificial intelligence, and machine learning.',
       },
       {
-        name: 'Victoria',
+        name: 'Victoria Pimentel',
         title: 'Technical Customer Support Manager, Solace',
         org: 'Solace',
         image: '/assets/speaker-headshots/victoria.jpg',
