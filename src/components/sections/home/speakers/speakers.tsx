@@ -30,6 +30,7 @@ export function Speakers() {
           {TALKS.map(talk => (
             <li key={talk.name} className="rounded-xl border border-primary/15 bg-card/65 px-5 py-4">
               <p className="text-lg font-semibold">{talk.name}</p>
+              {talk.role && <p className="text-sm text-foreground/60">{talk.role}</p>}
               <p className="text-foreground/70">{talk.topic}</p>
               <p className="mt-2 text-sm text-foreground/60">
                 <span className="tabular-nums">{talk.when}</span>
