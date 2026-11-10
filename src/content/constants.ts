@@ -305,6 +305,39 @@ export const PROGRAM = {
   /** Half-hour slots starting at 1:00 PM. */
   SLOT_LABELS: ['1:00', '1:30', '2:00', '2:30', '3:00', '3:30', '4:00', '4:30'],
   ROOMS: ['Newbridge I', 'Signed (GS)'],
+  GOOD_TO_KNOW_TITLE: 'Good to know',
+  SHUTTLE: {
+    TITLE: 'Shuttle from uOttawa and Carleton',
+    NOTE: 'Up to 46 students. Times are approximate. Algonquin College students will travel by Uber.',
+    TRIPS: [
+      {
+        label: 'To Brookstreet',
+        stops: [
+          { time: '11:15 AM', place: 'University of Ottawa', spot: '90U Residence parking lot, 90 Université Private', map: '45.422919,-75.685273' },
+          { time: '11:30 AM', place: 'Carleton University', spot: 'P2 parking, Campus Ave', map: '45.383814,-75.696861' },
+          { time: '12:00 PM', place: 'Brookstreet Hotel', spot: 'Main entrance, 525 Legget Dr, Kanata', map: '525 Legget Dr, Kanata, ON K2K 2W2' },
+        ],
+      },
+      {
+        label: 'Back home',
+        stops: [
+          { time: '5:15 PM', place: 'Brookstreet Hotel', spot: 'Main entrance, 525 Legget Dr, Kanata', map: '525 Legget Dr, Kanata, ON K2K 2W2' },
+          { time: '5:45 PM', place: 'Carleton University', spot: 'P2 parking, Campus Ave', map: '45.383814,-75.696861' },
+          { time: '6:00 PM', place: 'University of Ottawa', spot: '90U Residence parking lot, 90 Université Private', map: '45.422919,-75.685273' },
+        ],
+      },
+    ],
+  },
+  PERKS: [
+    {
+      title: 'Your resume, sent to Marvell',
+      description: 'We will pass attendee resumes along to Marvell, our Platinum Patron.',
+    },
+    {
+      title: 'Win an Apple Watch',
+      description: 'Every ticket is an entry into our giveaway for an Apple Watch and a $50 gift card.',
+    },
+  ],
 }
 
 export type SESSION_KIND = 'workshop' | 'talk' | 'panel'
@@ -323,7 +356,6 @@ export interface ISESSION {
 
 export const SESSIONS: ISESSION[] = [
   { title: 'CGI', kind: 'workshop', room: 0, start: 0, span: 1 },
-  { title: 'Mission Control', kind: 'workshop', room: 0, start: 1, span: 1 },
   { title: 'IEEE YP Panel', detail: 'From Campus to Career', kind: 'panel', room: 0, start: 2, span: 3, href: '#speakers' },
   { title: 'Marvell', kind: 'workshop', room: 0, start: 5, span: 2 },
   { title: 'Prof. Yiwei Lu', detail: 'AI Safety', kind: 'talk', room: 1, start: 0, span: 1 },
@@ -391,8 +423,11 @@ export const SPEAKERS = {
     ] satisfies ISPEAKER[],
   },
   TALKS: [
+    { name: 'Dr. Wahab Almuhtadi', role: 'President, IEEE Canada / IEEE Region 7', topic: 'Opening Remarks', when: '12:00 PM', room: 'Newbridge II & III' },
+    { name: 'Wendy Hopkins', role: 'Chair, IEEE Ottawa Section', topic: 'Opening Remarks', when: '12:00 PM', room: 'Newbridge II & III' },
     { name: 'Prof. Yiwei Lu', topic: 'AI Safety', when: '1:00 – 1:30 PM', room: 'Signed (GS)' },
     { name: 'Dr. Bushra Khan', topic: 'Leadership', when: '1:30 – 2:00 PM', room: 'Signed (GS)' },
+    { name: 'Women in Tech Panel', topic: 'Panel discussion', when: '4:30 – 5:00 PM', room: 'Signed (GS)' },
   ],
 }
 

@@ -11,6 +11,62 @@ const KINDS: Record<SESSION_KIND, { label: string, dot: string }> = {
   panel: { label: 'Panel', dot: 'bg-emerald-500' },
 }
 
+function mapHref(query: string) {
+  return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(query)}`
+}
+
+function GoodToKnow() {
+  const { SHUTTLE, PERKS } = PROGRAM
+
+  return (
+    <div id="good-to-know" className="mt-20 scroll-mt-28">
+      <h3 className="text-2xl font-semibold tracking-[-0.02em]">{PROGRAM.GOOD_TO_KNOW_TITLE}</h3>
+
+      <div className="mt-6 grid gap-14 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-16">
+        <ul className="divide-y divide-primary/15 self-start border-y border-primary/15">
+          {PERKS.map(perk => (
+            <li key={perk.title} className="py-5">
+              <p className="text-lg font-semibold">{perk.title}</p>
+              <p className="mt-1 leading-7 text-foreground/70">{perk.description}</p>
+            </li>
+          ))}
+        </ul>
+
+        <div>
+          <p className="text-lg font-semibold">{SHUTTLE.TITLE}</p>
+          <p className="mt-1 text-sm leading-6 text-foreground/70">{SHUTTLE.NOTE}</p>
+
+          <div className="mt-5 grid gap-x-10 gap-y-8 sm:grid-cols-2">
+            {SHUTTLE.TRIPS.map(trip => (
+              <div key={trip.label}>
+                <p className="pb-3 text-sm font-semibold text-primary">{trip.label}</p>
+                <ol className="divide-y divide-primary/15 border-y border-primary/15">
+                  {trip.stops.map(stop => (
+                    <li key={stop.time} className="grid grid-cols-[4.75rem_minmax(0,1fr)] gap-x-3 py-3">
+                      <p className="pt-0.5 text-sm tabular-nums text-foreground/60">{stop.time}</p>
+                      <div>
+                        <p className="font-semibold leading-snug">{stop.place}</p>
+                        <a
+                          href={mapHref(stop.map)}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-sm leading-snug text-foreground/70 transition-colors hover:text-primary hover:underline"
+                        >
+                          {stop.spot}
+                        </a>
+                      </div>
+                    </li>
+                  ))}
+                </ol>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+}
+
 function SessionCard({ session }: { session: ISESSION }) {
   const kind = KINDS[session.kind]
   const Wrapper = session.href ? 'a' : 'div'
@@ -112,6 +168,8 @@ export function Program() {
             </div>
           </div>
         </div>
+
+        <GoodToKnow />
       </SectionRail>
     </section>
   )
