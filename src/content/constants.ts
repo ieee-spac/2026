@@ -385,11 +385,11 @@ export const SPEAKERS = {
     ROOM: 'Newbridge I',
     DESCRIPTION: 'A career beyond academia can open many paths, but the transition often raises questions about how to translate research skills into industry roles, navigate hiring expectations, and build a fulfilling career. This career-coaching panel brings together professionals with academic and industry experience to share practical advice, personal lessons, and perspectives on making that transition with confidence.',
     MODERATOR: {
-      name: 'Afsoon Alidadi Shamsabadi',
+      name: 'Dr. Afsoon Alidadi Shamsabadi',
       title: 'Manager, Non-Terrestrial Networks Lab, Carleton University',
       org: 'Carleton University',
       image: '/assets/speaker-headshots/afsoon-alidadi-shamsabadi.jpg',
-      bio: 'Afsoon Alidadi Shamsabadi (She/Her) is the Manager of the Non-Terrestrial Networks Lab at Carleton University, Canada. She is also the Past Chair of IEEE Women in Engineering Ottawa, Vice-Chair of IEEE Young Professionals Ottawa, and a Committee Member of IEEE Canada Young Professionals. She holds a PhD from Carleton University and has also studied at Isfahan University of Technology and Sharif University of Technology. She has six years of industry experience at Huawei Technologies, where she served as a Solution Sales Manager specializing in end-to-end wireless network solutions. Her research at Carleton University focuses on non-terrestrial networks (NTN), particularly the integration of High Altitude Platform Stations (HAPS) with terrestrial wireless networks to enable next-generation connectivity. Afsoon is an IEEE Senior Member and is actively involved in the engineering community.',
+      bio: 'Dr. Afsoon Alidadi Shamsabadi (She/Her) is the Manager of the Non-Terrestrial Networks Lab at Carleton University, Canada. She is also the Past Chair of IEEE Women in Engineering Ottawa, Vice-Chair of IEEE Young Professionals Ottawa, and a Committee Member of IEEE Canada Young Professionals. She holds a PhD from Carleton University and has also studied at Isfahan University of Technology and Sharif University of Technology. She has six years of industry experience at Huawei Technologies, where she served as a Solution Sales Manager specializing in end-to-end wireless network solutions. Her research at Carleton University focuses on non-terrestrial networks (NTN), particularly the integration of High Altitude Platform Stations (HAPS) with terrestrial wireless networks to enable next-generation connectivity. Afsoon is an IEEE Senior Member and is actively involved in the engineering community.',
     } satisfies ISPEAKER,
     PANELISTS: [
       {
