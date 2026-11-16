@@ -4,7 +4,7 @@ import logo from '@root/public/assets/twilight-design-system/SPAC2025_logo_spark
 import { ShinyButton } from '@/components/twilight/shiny-button/shiny-button'
 import { WarpBackground } from '@/components/twilight/warp-background/warp-background'
 
-import { HERO, LINKS } from '@/content/constants'
+import { EVENT_YEAR, HERO, LINKS } from '@/content/constants'
 
 export function Hero() {
   return (
@@ -53,9 +53,9 @@ export function Hero() {
 
         <div className="flex w-full flex-col items-center gap-3">
           <ShinyButton
-            href={LINKS.SPAC_TICKETS}
+            href={LINKS.GALLERY}
             external
-            text="Register for SPAC"
+            text={`View ${EVENT_YEAR} Gallery`}
           />
         </div>
       </main>
