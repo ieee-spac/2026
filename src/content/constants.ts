@@ -14,7 +14,7 @@ export const METADATA = {
 
 export const LINKS = {
   DOMAIN: 'ieeespac.ca',
-  GALLERY: 'https://www.hgmedias.ca/ieee-spac-2025',
+  GALLERY: 'https://dawnmcleodphotography.pixieset.com/spac/',
   PATRONAGE_PACKAGE:
     'https://www.canva.com/design/DAGm9tsOucg/neaqO-lvIVJiQMIKE8r-HQ/view?utm_content=DAGm9tsOucg&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h7a71b5f6d5#1',
   SPAC_TICKETS: 'https://events.vtools.ieee.org/m/584396',
